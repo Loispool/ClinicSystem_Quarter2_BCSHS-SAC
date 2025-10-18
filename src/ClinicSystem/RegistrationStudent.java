@@ -20,20 +20,21 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class RegistrationAdmin extends javax.swing.JFrame {
+public class RegistrationStudent extends javax.swing.JFrame {
 
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrationAdmin.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrationStudent.class.getName());
 
     /**
      * Creates new form RegistrationAdmin
      */
-    public RegistrationAdmin() {
+    public RegistrationStudent() {
         initComponents();
         Connect();
+	 jPanel2.setBackground(new Color(38,26,114,200));
     }
 
     public final void Connect() {
@@ -41,7 +42,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/admin_data", "root", "");
         } catch (ClassNotFoundException | SQLException ex) {
-            System.getLogger(RegistrationAdmin.class.getName()).log(System.Logger.Level.ERROR,
+            System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR,
                     (String) null, ex);
         }
     }
@@ -55,33 +56,23 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
-                jPanel3 = new javax.swing.JPanel();
                 jPanel1 = new javax.swing.JPanel();
                 jPanel2 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 employmentId = new javax.swing.JTextField();
-                eyeClosedConPass = new javax.swing.JLabel();
-                eyeClosedPass = new javax.swing.JLabel();
-                confirmPass = new javax.swing.JPasswordField();
-                regPass = new javax.swing.JPasswordField();
-                department = new javax.swing.JTextField();
-                regUserName = new javax.swing.JTextField();
-                regFirstName = new javax.swing.JTextField();
+                Weight = new javax.swing.JTextField();
                 regLastName = new javax.swing.JTextField();
+                Sex = new javax.swing.JTextField();
+                regFirstName = new javax.swing.JTextField();
                 register = new javax.swing.JButton();
-                jPanel4 = new javax.swing.JPanel();
+                Age = new javax.swing.JTextField();
+                Height = new javax.swing.JTextField();
+                Height1 = new javax.swing.JTextField();
+                Height2 = new javax.swing.JTextField();
+                jPanel3 = new javax.swing.JPanel();
                 jLabel2 = new javax.swing.JLabel();
-
-                javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-                jPanel3.setLayout(jPanel3Layout);
-                jPanel3Layout.setHorizontalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 100, Short.MAX_VALUE)
-                );
-                jPanel3Layout.setVerticalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 100, Short.MAX_VALUE)
-                );
+                jLabel3 = new javax.swing.JLabel();
+                pictureBg = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setResizable(false);
@@ -94,11 +85,11 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
                 jLabel1.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
                 jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-                jLabel1.setText("Register");
-                jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+                jLabel1.setText("Registration");
+                jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
                 employmentId.setForeground(new java.awt.Color(153, 153, 153));
-                employmentId.setText("Employment ID");
+                employmentId.setText("LRN");
                 employmentId.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 employmentIdFocusGained(evt);
@@ -112,107 +103,24 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 employmentIdActionPerformed(evt);
                         }
                 });
-                jPanel2.add(employmentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 180, 40));
+                jPanel2.add(employmentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 178, 40));
 
-                eyeClosedConPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"))); // NOI18N
-                eyeClosedConPass.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mousePressed(java.awt.event.MouseEvent evt) {
-                                eyeClosedConPassMousePressed(evt);
-                        }
-                        public void mouseReleased(java.awt.event.MouseEvent evt) {
-                                eyeClosedConPassMouseReleased(evt);
-                        }
-                });
-                jPanel2.add(eyeClosedConPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
-
-                eyeClosedPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"))); // NOI18N
-                eyeClosedPass.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                eyeClosedPassMouseExited(evt);
-                        }
-                        public void mousePressed(java.awt.event.MouseEvent evt) {
-                                eyeClosedPassMousePressed(evt);
-                        }
-                        public void mouseReleased(java.awt.event.MouseEvent evt) {
-                                eyeClosedPassMouseReleased(evt);
-                        }
-                });
-                jPanel2.add(eyeClosedPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, -1));
-
-                confirmPass.setText("Confirm Password");
-                confirmPass.addFocusListener(new java.awt.event.FocusAdapter() {
+                Weight.setForeground(new java.awt.Color(153, 153, 153));
+                Weight.setText("Weight");
+                Weight.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
-                                confirmPassFocusGained(evt);
+                                WeightFocusGained(evt);
                         }
                         public void focusLost(java.awt.event.FocusEvent evt) {
-                                confirmPassFocusLost(evt);
+                                WeightFocusLost(evt);
                         }
                 });
-                jPanel2.add(confirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
-
-                regPass.setText("Password");
-                regPass.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-                        public void mouseDragged(java.awt.event.MouseEvent evt) {
-                                regPassMouseDragged(evt);
-                        }
-                });
-                regPass.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                regPassFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                regPassFocusLost(evt);
-                        }
-                });
-                jPanel2.add(regPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, 40));
-
-                department.setForeground(new java.awt.Color(153, 153, 153));
-                department.setText("Department");
-                department.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                departmentFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                departmentFocusLost(evt);
-                        }
-                });
-                department.addActionListener(new java.awt.event.ActionListener() {
+                Weight.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                departmentActionPerformed(evt);
+                                WeightActionPerformed(evt);
                         }
                 });
-                jPanel2.add(department, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, 40));
-
-                regUserName.setForeground(new java.awt.Color(153, 153, 153));
-                regUserName.setText("Username");
-                regUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                regUserNameFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                regUserNameFocusLost(evt);
-                        }
-                });
-                jPanel2.add(regUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 180, 40));
-
-                regFirstName.setForeground(new java.awt.Color(153, 153, 153));
-                regFirstName.setText("FirstName");
-                regFirstName.setMinimumSize(new java.awt.Dimension(80, 22));
-                regFirstName.setPreferredSize(new java.awt.Dimension(80, 22));
-                regFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                regFirstNameFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                regFirstNameFocusLost(evt);
-                        }
-                });
-                regFirstName.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                regFirstNameActionPerformed(evt);
-                        }
-                });
-                jPanel2.add(regFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, 40));
+                jPanel2.add(Weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 60, 40));
 
                 regLastName.setForeground(new java.awt.Color(153, 153, 153));
                 regLastName.setText("LastName");
@@ -231,7 +139,38 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 regLastNameActionPerformed(evt);
                         }
                 });
-                jPanel2.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 40));
+                jPanel2.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 90, 40));
+
+                Sex.setForeground(new java.awt.Color(153, 153, 153));
+                Sex.setText("Sex");
+                Sex.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                SexFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                SexFocusLost(evt);
+                        }
+                });
+                jPanel2.add(Sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 50, 40));
+
+                regFirstName.setForeground(new java.awt.Color(153, 153, 153));
+                regFirstName.setText("FirstName");
+                regFirstName.setMinimumSize(new java.awt.Dimension(80, 22));
+                regFirstName.setPreferredSize(new java.awt.Dimension(80, 22));
+                regFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                regFirstNameFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                regFirstNameFocusLost(evt);
+                        }
+                });
+                regFirstName.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                regFirstNameActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(regFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 40));
 
                 register.setForeground(new java.awt.Color(38, 26, 114));
                 register.setText("Register");
@@ -242,28 +181,106 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 });
                 jPanel2.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
+                Age.setForeground(new java.awt.Color(153, 153, 153));
+                Age.setText("Age");
+                Age.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                AgeFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                AgeFocusLost(evt);
+                        }
+                });
+                Age.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                AgeActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 50, 40));
+
+                Height.setForeground(new java.awt.Color(153, 153, 153));
+                Height.setText("Height");
+                Height.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                HeightFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                HeightFocusLost(evt);
+                        }
+                });
+                Height.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                HeightActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(Height, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
+
+                Height1.setForeground(new java.awt.Color(153, 153, 153));
+                Height1.setText("Height");
+                Height1.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                Height1FocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                Height1FocusLost(evt);
+                        }
+                });
+                Height1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                Height1ActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(Height1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, 40));
+
+                Height2.setForeground(new java.awt.Color(153, 153, 153));
+                Height2.setText("Height");
+                Height2.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                Height2FocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                Height2FocusLost(evt);
+                        }
+                });
+                Height2.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                Height2ActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(Height2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, 40));
+
+                jPanel3.setBackground(new java.awt.Color(38, 26, 114));
+
                 jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/logo_school-removebg-preview.png"))); // NOI18N
 
-                javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-                jPanel4.setLayout(jPanel4Layout);
-                jPanel4Layout.setHorizontalGroup(
-                        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+                jPanel3.setLayout(jPanel3Layout);
+                jPanel3Layout.setHorizontalGroup(
+                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap(8, Short.MAX_VALUE)
                                 .addComponent(jLabel2)
-                                .addGap(21, 21, 21))
+                                .addContainerGap())
                 );
-                jPanel4Layout.setVerticalGroup(
-                        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
+                jPanel3Layout.setVerticalGroup(
+                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
                                 .addComponent(jLabel2)
-                                .addContainerGap(378, Short.MAX_VALUE))
+                                .addContainerGap(379, Short.MAX_VALUE))
                 );
 
-                jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, 470));
+                jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, 480));
 
-                jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 340, 480));
+                jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel3.setText("Student's");
+                jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+                jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, 480));
+
+                pictureBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/6226336049911680989.jpg"))); // NOI18N
+                jPanel1.add(pictureBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 480));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -273,7 +290,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
                 );
 
                 pack();
@@ -284,17 +301,17 @@ public class RegistrationAdmin extends javax.swing.JFrame {
             // TODO add your handling code here:
         }//GEN-LAST:event_regLastNameActionPerformed
 
-        private void departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentActionPerformed
+        private void WeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeightActionPerformed
             // TODO add your handling code here:
-        }//GEN-LAST:event_departmentActionPerformed
+        }//GEN-LAST:event_WeightActionPerformed
 
         private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
             // TODO add your handling code here:
             String EmploymentID = employmentId.getText();
             String firstName = regFirstName.getText();
             String lastName = regLastName.getText();
-            String userName = regUserName.getText();
-            String depart = department.getText();
+            String userName = Sex.getText();
+            String depart = Weight.getText();
             String password = regPass.getText();
             String conPass = confirmPass.getText();
 
@@ -320,7 +337,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                         String checkQuery = "SELECT COUNT(*) FROM adminregistration WHERE UserName = ?";
                         int count;
                         try (PreparedStatement checkSt = con.prepareStatement(checkQuery)) {
-                            checkSt.setString(1, regUserName.getText()); // Get the text from the username field
+                            checkSt.setString(1, Sex.getText()); // Get the text from the username field
                             try (ResultSet rs = checkSt.executeQuery()) {
                                 count = 0;
                                 if (rs.next()) {
@@ -350,8 +367,8 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 employmentId.setText("");
                                 regFirstName.setText("");
                                 regLastName.setText("");
-                                regUserName.setText("");
-                                department.setText("");
+                                Sex.setText("");
+                                Weight.setText("");
                                 regPass.setText("");
                                 confirmPass.setText("");
                                 LogIn loginPage = new LogIn();
@@ -365,9 +382,9 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                     }
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegistrationAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RegistrationStudent.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                System.getLogger(RegistrationAdmin.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
 
         }//GEN-LAST:event_registerActionPerformed
@@ -397,7 +414,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
         private void regLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regLastNameFocusGained
             // TODO add your handling code here:
-            if (regLastName.getText().equals("LastName")) {
+            if (regLastName.getText().equals("Age")) {
                 regLastName.setText("");
                 regLastName.setForeground(new Color(0, 0, 0));
             }
@@ -406,7 +423,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         private void regLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regLastNameFocusLost
             // TODO add your handling code here:
             if (regLastName.getText().equals("")) {
-                regLastName.setText("LastName");
+                regLastName.setText("Age");
                 regLastName.setForeground(new Color(153, 153, 153));
             } else {
                 regLastName.setForeground(new Color(0, 0, 0));
@@ -414,96 +431,29 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
         }//GEN-LAST:event_regLastNameFocusLost
 
-        private void regUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regUserNameFocusGained
+        private void WeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WeightFocusGained
             // TODO add your handling code here:
-            if (regUserName.getText().equals("Username")) {
-                regUserName.setText("");
-                regUserName.setForeground(new Color(0, 0, 0));
+            if (Weight.getText().equals("Department")) {
+                Weight.setText("");
+                Weight.setForeground(new Color(0, 0, 0));
             }
-        }//GEN-LAST:event_regUserNameFocusGained
 
-        private void regUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regUserNameFocusLost
+        }//GEN-LAST:event_WeightFocusGained
+
+        private void WeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WeightFocusLost
             // TODO add your handling code here:
-            if (regUserName.getText().equals("")) {
-                regUserName.setText("Username");
-                regUserName.setForeground(new Color(153, 153, 153));
+            if (Weight.getText().equals("")) {
+                Weight.setText("Department");
+                Weight.setForeground(new Color(153, 153, 153));
             } else {
-                regUserName.setForeground(new Color(0, 0, 0));
+                Weight.setForeground(new Color(0, 0, 0));
             }
 
-        }//GEN-LAST:event_regUserNameFocusLost
-
-        private void departmentFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departmentFocusGained
-            // TODO add your handling code here:
-            if (department.getText().equals("Department")) {
-                department.setText("");
-                department.setForeground(new Color(0, 0, 0));
-            }
-
-        }//GEN-LAST:event_departmentFocusGained
-
-        private void departmentFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departmentFocusLost
-            // TODO add your handling code here:
-            if (department.getText().equals("")) {
-                department.setText("Department");
-                department.setForeground(new Color(153, 153, 153));
-            } else {
-                department.setForeground(new Color(0, 0, 0));
-            }
-
-        }//GEN-LAST:event_departmentFocusLost
+        }//GEN-LAST:event_WeightFocusLost
 
         private void regFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regFirstNameActionPerformed
             // TODO add your handling code here:
         }//GEN-LAST:event_regFirstNameActionPerformed
-
-        private void regPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regPassFocusGained
-            // TODO add your handling code here:
-
-            if (regPass.getText().equals("Password")) {
-                regPass.setEchoChar('*');
-                regPass.setText("");
-                regPass.setForeground(new Color(0, 0, 0));
-            }
-        }//GEN-LAST:event_regPassFocusGained
-
-        private void regPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regPassFocusLost
-            // TODO add your handling code here:
-
-            if (regPass.getText().equals("")) {
-                regPass.setEchoChar((char) 0);
-                regPass.setText("Password");
-                regPass.setForeground(new Color(153, 153, 153));
-            } else {
-                regPass.setForeground(new Color(0, 0, 0));
-            }
-        }//GEN-LAST:event_regPassFocusLost
-
-        private void regPassMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regPassMouseDragged
-
-        }//GEN-LAST:event_regPassMouseDragged
-
-        private void confirmPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFocusGained
-            // TODO add your handling code here:
-
-            if (confirmPass.getText().equals("Confirm Password")) {
-                confirmPass.setEchoChar('*');
-                confirmPass.setText("");
-                confirmPass.setForeground(new Color(0, 0, 0));
-            }
-        }//GEN-LAST:event_confirmPassFocusGained
-
-        private void confirmPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirmPassFocusLost
-            // TODO add your handling code here:
-
-            if (confirmPass.getText().equals("")) {
-                confirmPass.setEchoChar((char) 0);
-                confirmPass.setText("Confirm Password");
-                confirmPass.setForeground(new Color(153, 153, 153));
-            } else {
-                confirmPass.setForeground(new Color(0, 0, 0));
-            }
-        }//GEN-LAST:event_confirmPassFocusLost
 
         private void employmentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employmentIdActionPerformed
             // TODO add your handling code here:
@@ -511,7 +461,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
         private void employmentIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employmentIdFocusGained
             // TODO add your handling code here:
-            if (employmentId.getText().equals("Employment ID")) {
+            if (employmentId.getText().equals("LRN")) {
                 employmentId.setText("");
                 employmentId.setForeground(new Color(0, 0, 0));
             }
@@ -520,53 +470,78 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         private void employmentIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_employmentIdFocusLost
             // TODO add your handling code here:
             if (employmentId.getText().equals("")) {
-                employmentId.setText("Employment ID");
+                employmentId.setText("LRN");
                 employmentId.setForeground(new Color(153, 153, 153));
             } else {
                 employmentId.setForeground(new Color(0, 0, 0));
             }
         }//GEN-LAST:event_employmentIdFocusLost
 
-        private void eyeClosedPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMousePressed
-            // TODO add your handling code here:
-            String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-visible-24.png";
-            ImageIcon icon = new ImageIcon(image);
-            icon.getImage().flush();
-            eyeClosedPass.setIcon(icon);
-            regPass.setEchoChar((char) 0);
-        }//GEN-LAST:event_eyeClosedPassMousePressed
-
-    private void eyeClosedPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMouseReleased
-        // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-not-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
-        icon.getImage().flush();
-        eyeClosedPass.setIcon(icon);
-         regPass.setEchoChar('*');
-    }//GEN-LAST:event_eyeClosedPassMouseReleased
-
-    private void eyeClosedConPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedConPassMousePressed
-        // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
-        icon.getImage().flush();
-        eyeClosedConPass.setIcon(icon);
-        confirmPass.setEchoChar((char) 0);
-    }//GEN-LAST:event_eyeClosedConPassMousePressed
-
-    private void eyeClosedConPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedConPassMouseReleased
-        // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-not-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
-        icon.getImage().flush();
-        eyeClosedConPass.setIcon(icon);
-            confirmPass.setEchoChar('*');
-        
-    }//GEN-LAST:event_eyeClosedConPassMouseReleased
-
-        private void eyeClosedPassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMouseExited
+        private void SexFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SexFocusLost
                 // TODO add your handling code here:
-        }//GEN-LAST:event_eyeClosedPassMouseExited
+                if (Sex.getText().equals("")) {
+                        Sex.setText("Sex");
+                        Sex.setForeground(new Color(153, 153, 153));
+                } else {
+                        Sex.setForeground(new Color(0, 0, 0));
+                }
+        }//GEN-LAST:event_SexFocusLost
+
+        private void SexFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SexFocusGained
+                // TODO add your handling code here:
+                if (Sex.getText().equals("Sex")) {
+                        Sex.setText("");
+                        Sex.setForeground(new Color(0, 0, 0));
+                }
+        }//GEN-LAST:event_SexFocusGained
+
+        private void AgeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AgeFocusGained
+                // TODO add your handling code here:
+        }//GEN-LAST:event_AgeFocusGained
+
+        private void AgeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AgeFocusLost
+                // TODO add your handling code here:
+        }//GEN-LAST:event_AgeFocusLost
+
+        private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_AgeActionPerformed
+
+        private void HeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_HeightFocusGained
+                // TODO add your handling code here:
+        }//GEN-LAST:event_HeightFocusGained
+
+        private void HeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_HeightFocusLost
+                // TODO add your handling code here:
+        }//GEN-LAST:event_HeightFocusLost
+
+        private void HeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeightActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_HeightActionPerformed
+
+        private void Height1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Height1FocusGained
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height1FocusGained
+
+        private void Height1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Height1FocusLost
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height1FocusLost
+
+        private void Height1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Height1ActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height1ActionPerformed
+
+        private void Height2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Height2FocusGained
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height2FocusGained
+
+        private void Height2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Height2FocusLost
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height2FocusLost
+
+        private void Height2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Height2ActionPerformed
+                // TODO add your handling code here:
+        }//GEN-LAST:event_Height2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -590,25 +565,26 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RegistrationAdmin().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RegistrationStudent().setVisible(true));
     }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JPasswordField confirmPass;
-        private javax.swing.JTextField department;
+        private javax.swing.JTextField Age;
+        private javax.swing.JTextField Height;
+        private javax.swing.JTextField Height1;
+        private javax.swing.JTextField Height2;
+        private javax.swing.JTextField Sex;
+        private javax.swing.JTextField Weight;
         private javax.swing.JTextField employmentId;
-        private javax.swing.JLabel eyeClosedConPass;
-        private javax.swing.JLabel eyeClosedPass;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel jPanel3;
-        private javax.swing.JPanel jPanel4;
+        private javax.swing.JLabel pictureBg;
         private javax.swing.JTextField regFirstName;
         private javax.swing.JTextField regLastName;
-        private javax.swing.JPasswordField regPass;
-        private javax.swing.JTextField regUserName;
         private javax.swing.JButton register;
         // End of variables declaration//GEN-END:variables
 }

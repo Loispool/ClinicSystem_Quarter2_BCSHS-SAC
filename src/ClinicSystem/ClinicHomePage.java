@@ -35,16 +35,16 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
                 jPanel2 = new javax.swing.JPanel();
                 ClinicSys = new javax.swing.JLabel();
-                jButton3 = new javax.swing.JButton();
-                jButton4 = new javax.swing.JButton();
                 jButton5 = new javax.swing.JButton();
-                jButton6 = new javax.swing.JButton();
-                jButton7 = new javax.swing.JButton();
                 greyBg = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 jPanel1 = new javax.swing.JPanel();
                 BcshsSactxt = new javax.swing.JLabel();
                 panelMainBg = new javax.swing.JPanel();
+                jButton6 = new javax.swing.JButton();
+                jButton4 = new javax.swing.JButton();
+                jButton7 = new javax.swing.JButton();
+                jButton3 = new javax.swing.JButton();
                 jLabel2 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,25 +58,9 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 ClinicSys.setText("Clinic System");
                 jPanel2.add(ClinicSys, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 410, -1));
 
-                jButton3.setBackground(new java.awt.Color(115, 115, 115));
-                jButton3.setForeground(new java.awt.Color(255, 255, 255));
-                jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 120, 50));
-
-                jButton4.setBackground(new java.awt.Color(115, 115, 115));
-                jButton4.setForeground(new java.awt.Color(255, 255, 255));
-                jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 120, 50));
-
                 jButton5.setBackground(new java.awt.Color(115, 115, 115));
                 jButton5.setForeground(new java.awt.Color(255, 255, 255));
                 jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 50));
-
-                jButton6.setBackground(new java.awt.Color(115, 115, 115));
-                jButton6.setForeground(new java.awt.Color(255, 255, 255));
-                jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 120, 50));
-
-                jButton7.setBackground(new java.awt.Color(115, 115, 115));
-                jButton7.setForeground(new java.awt.Color(255, 255, 255));
-                jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 120, 50));
 
                 greyBg.setBackground(new java.awt.Color(153, 153, 153));
                 greyBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,18 +101,46 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
                 panelMainBg.setBackground(new java.awt.Color(204, 204, 204));
 
+                jButton6.setBackground(new java.awt.Color(115, 115, 115));
+                jButton6.setForeground(new java.awt.Color(255, 255, 255));
+
+                jButton4.setBackground(new java.awt.Color(115, 115, 115));
+                jButton4.setForeground(new java.awt.Color(255, 255, 255));
+
+                jButton7.setBackground(new java.awt.Color(115, 115, 115));
+                jButton7.setForeground(new java.awt.Color(255, 255, 255));
+
+                jButton3.setBackground(new java.awt.Color(115, 115, 115));
+                jButton3.setForeground(new java.awt.Color(255, 255, 255));
+
                 javax.swing.GroupLayout panelMainBgLayout = new javax.swing.GroupLayout(panelMainBg);
                 panelMainBg.setLayout(panelMainBgLayout);
                 panelMainBgLayout.setHorizontalGroup(
                         panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 770, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(147, 147, 147)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
                 );
                 panelMainBgLayout.setVerticalGroup(
                         panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 430, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
+                                .addContainerGap(365, Short.MAX_VALUE)
+                                .addGroup(panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45))
                 );
 
-                jPanel2.add(panelMainBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 430));
+                jPanel2.add(panelMainBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 460));
 
                 jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/6226336049911680989.jpg"))); // NOI18N
                 jLabel2.setText("jLabel2");
@@ -137,6 +149,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 771, 430));
 
                 pack();
+                setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
 	/**
