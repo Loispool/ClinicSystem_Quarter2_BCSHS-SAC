@@ -37,11 +37,28 @@ public class RegistrationStudent extends javax.swing.JFrame {
 		jPanel2.setBackground(new Color(38, 26, 114, 200));
 	}
 
+	/**
+	 * Refresh StudentData window if it's currently open
+	 */
+	private void refreshStudentDataIfOpen() {
+		try {
+			// Find all open windows
+			java.awt.Window[] windows = java.awt.Window.getWindows();
+			for (java.awt.Window window : windows) {
+				if (window instanceof StudentData && window.isVisible()) {
+					((StudentData) window).refreshTable();
+					System.out.println("✓ StudentData table refreshed");
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("Could not refresh StudentData: " + e.getMessage());
+		}
+	}
+
 	public final void Connect() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/admin_data", "root", "");
-		} catch (ClassNotFoundException | SQLException ex) {
+			con = DatabaseConnector.getStudentConnection();
+		} catch (SQLException ex) {
 			System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR,
 				(String) null, ex);
 		}
@@ -75,6 +92,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
                 pictureBg = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setTitle("");
                 setResizable(false);
 
                 jPanel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -90,6 +108,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
                 LRN.setForeground(new java.awt.Color(153, 153, 153));
                 LRN.setText("LRN");
+                LRN.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 LRN.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 LRNFocusGained(evt);
@@ -103,10 +122,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 LRNActionPerformed(evt);
                         }
                 });
-                jPanel2.add(LRN, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 178, 40));
+                jPanel2.add(LRN, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 170, 40));
 
                 Weight.setForeground(new java.awt.Color(153, 153, 153));
-                Weight.setText("Weight");
+                Weight.setText("Weight (Kg)");
+                Weight.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 Weight.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 WeightFocusGained(evt);
@@ -120,10 +140,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 WeightActionPerformed(evt);
                         }
                 });
-                jPanel2.add(Weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 60, 40));
+                jPanel2.add(Weight, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 80, 40));
 
                 regLastName.setForeground(new java.awt.Color(153, 153, 153));
                 regLastName.setText("LastName");
+                regLastName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 regLastName.setMinimumSize(new java.awt.Dimension(80, 22));
                 regLastName.setPreferredSize(new java.awt.Dimension(80, 22));
                 regLastName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -139,10 +160,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 regLastNameActionPerformed(evt);
                         }
                 });
-                jPanel2.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 90, 40));
+                jPanel2.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 80, 40));
 
                 Sex.setForeground(new java.awt.Color(153, 153, 153));
                 Sex.setText("Sex");
+                Sex.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 Sex.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 SexFocusGained(evt);
@@ -151,10 +173,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 SexFocusLost(evt);
                         }
                 });
-                jPanel2.add(Sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 50, 40));
+                jPanel2.add(Sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 80, 40));
 
                 regFirstName.setForeground(new java.awt.Color(153, 153, 153));
                 regFirstName.setText("FirstName");
+                regFirstName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 regFirstName.setMinimumSize(new java.awt.Dimension(80, 22));
                 regFirstName.setPreferredSize(new java.awt.Dimension(80, 22));
                 regFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -183,6 +206,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
                 Age.setForeground(new java.awt.Color(153, 153, 153));
                 Age.setText("Age");
+                Age.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 Age.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 AgeFocusGained(evt);
@@ -196,10 +220,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 AgeActionPerformed(evt);
                         }
                 });
-                jPanel2.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 50, 40));
+                jPanel2.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 80, 40));
 
                 Section.setForeground(new java.awt.Color(153, 153, 153));
                 Section.setText("Section");
+                Section.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 Section.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 SectionFocusGained(evt);
@@ -213,10 +238,20 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 SectionActionPerformed(evt);
                         }
                 });
-                jPanel2.add(Section, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
+                jPanel2.add(Section, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 170, 40));
 
                 Height.setForeground(new java.awt.Color(153, 153, 153));
-                Height.setText("Height");
+                Height.setText("Height (Cm)");
+                Height.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                Height.addAncestorListener(new javax.swing.event.AncestorListener() {
+                        public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                                HeightAncestorAdded(evt);
+                        }
+                        public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                        }
+                        public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                        }
+                });
                 Height.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 HeightFocusGained(evt);
@@ -230,10 +265,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 HeightActionPerformed(evt);
                         }
                 });
-                jPanel2.add(Height, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, 40));
+                jPanel2.add(Height, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 80, 40));
 
                 Grade.setForeground(new java.awt.Color(153, 153, 153));
                 Grade.setText("Grade");
+                Grade.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 Grade.addFocusListener(new java.awt.event.FocusAdapter() {
                         public void focusGained(java.awt.event.FocusEvent evt) {
                                 GradeFocusGained(evt);
@@ -247,11 +283,11 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 GradeActionPerformed(evt);
                         }
                 });
-                jPanel2.add(Grade, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, 40));
+                jPanel2.add(Grade, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 170, 40));
 
                 jPanel3.setBackground(new java.awt.Color(38, 26, 114));
 
-                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/logo_school-removebg-preview.png"))); // NOI18N
+                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/logo_school-removebg-preview.png"))); // NOI18N
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
@@ -270,16 +306,16 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 .addContainerGap(379, Short.MAX_VALUE))
                 );
 
-                jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, 480));
+                jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 100, 480));
 
                 jLabel3.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
                 jLabel3.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel3.setText("Student's");
-                jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+                jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 50));
 
-                jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, -1));
+                jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, 490));
 
-                pictureBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/6226336049911680989.jpg"))); // NOI18N
+                pictureBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911680989.jpg"))); // NOI18N
                 jPanel1.add(pictureBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 480));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -307,94 +343,152 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
 		// TODO add your handling code here:
-		String lrn = LRN.getText();
-		String firstName = regFirstName.getText();
-		String lastName = regLastName.getText();
-		String sex = Sex.getText();
-		String weight = Weight.getText();
-		String height = Height.getText();
-		String grade = Grade.getText();
-		String section = Section.getText();
+		// --- 1. GATHER DATA ---
+		// Ensure you use .trim() on ALL fields to remove accidental spaces
+		String lrn = LRN.getText().trim();
+		String firstName = regFirstName.getText().trim();
+		String lastName = regLastName.getText().trim();
+		String sex = Sex.getText().trim();
+		String weight = Weight.getText().trim();
+		String height = Height.getText().trim();
+		String grade = Grade.getText().trim();
+		String section = Section.getText().trim();
+
+		// The Age field is present in your GUI component code, but missing from your data gathering here.
+		// Ensure you include it if it's required by the 'student' table:
+		// String age = Age.getText().trim(); // <-- Add this if needed
+		// --- 2. VALIDATION ---
+		if (firstName.isEmpty() || lastName.isEmpty() || sex.isEmpty() || weight.isEmpty() || height.isEmpty() || grade.isEmpty() || section.isEmpty() || lrn.isEmpty()
+			|| firstName.equals("FirstName") || lastName.equals("LastName") || sex.equals("Sex") || weight.equals("Weight (Kg)") || height.equals("Height (Cm)")
+			|| grade.equals("Grade") || section.equals("Section")) {
+			JOptionPane.showMessageDialog(this, "Please fill all required information.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		} else if (lrn.length() != 12) {
+			JOptionPane.showMessageDialog(this, "The LRN must be exactly 12 digits.", "Error", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		// --- 3. DATABASE OPERATIONS SETUP ---
+		Connection tempCon = con; // Use the existing connection
+		PreparedStatement studentPst = null;
+		PreparedStatement diagnosticPst = null;
+
+		// Flag to manage the transaction state
+		boolean transactionStarted = false;
 
 		try {
-			if (firstName.isEmpty()
-				|| lastName.isEmpty()
-				|| sex.isEmpty()
-				|| weight.isEmpty()
-				|| height.isEmpty()
-				|| grade.isEmpty()
-				|| section.isEmpty()
-				|| lrn.isEmpty()
-				&& firstName.equals("FirstName")
-				|| lastName.equals("LastName")
-				|| sex.equals("Sex")
-				|| weight.equals("Weight")
-				|| height.equals("Height")
-				|| grade.equals("Grade")
-				|| section.equals("Section")) {
-				JOptionPane.showMessageDialog(this, "Please Fill all the needed Info", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
+			if (tempCon == null || tempCon.isClosed()) {
+				JOptionPane.showMessageDialog(this, "Database connection not established.", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 
-				String checkQuery = "SELECT COUNT(*) FROM adminregistration WHERE UserName = ?";
-				int count = 0;
-				try (PreparedStatement checkSt = con.prepareStatement(checkQuery)) {
-					checkSt.setString(1, Sex.getText()); // Get the text from the username field
-					try (ResultSet rs = checkSt.executeQuery()) {
-						count = 0;
-						if (rs.next()) {
-							count = rs.getInt(1);
-						}
-					}
-				} catch (SQLException ex) {
-					System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-				} // Get the text from the username field // Get the text from the username field
+			// --- Start Transaction ---
+			tempCon.setAutoCommit(false);
+			transactionStarted = true;
 
-				if (count > 0) {
-					// Username is already in the database
-					JOptionPane.showMessageDialog(null, "Username is already taken!", "Error", JOptionPane.ERROR_MESSAGE);
-				} else {
-
-					pst = con.prepareStatement("insert into adminregistration(lrn,FirstName,LastName,Sex,Weight,Height,Grade, Section )"
-						+ "values(?,?,?,?,?,?,?,?)");
-					pst.setString(1, lrn);
-					pst.setString(2, firstName);
-					pst.setString(3, lastName);
-					pst.setString(4, sex);
-					pst.setString(5, weight);
-					pst.setString(6, height);
-					pst.setString(7, grade);
-					pst.setString(8, section);
-
-					int result = pst.executeUpdate();
-
-					if (result == 1) {
-						JOptionPane.showMessageDialog(this, "Registration Succesfull");
-						LRN.setText("");
-						regFirstName.setText("");
-						regLastName.setText("");
-						Sex.setText("");
-						Weight.setText("");
-						Height.setText("");
-						Grade.setText("");
-						Section.setText("");
-						LogIn loginPage;
-						try {
-							loginPage = new LogIn();
-							loginPage.setVisible(true);
-							this.dispose();
-
-							pst.close();
-						} catch (ClassNotFoundException ex) {
-							System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-						}
-
+			// --- A. Check for Duplicates (Checking LRN is better than name) ---
+			// I will keep your name check logic for now, but LRN is the unique identifier.
+			String checkQuery = "SELECT COUNT(*) FROM student WHERE LRN = ?";
+			int count = 0;
+			try (PreparedStatement checkSt = tempCon.prepareStatement(checkQuery)) {
+				checkSt.setString(1, lrn);
+				try (ResultSet rs = checkSt.executeQuery()) {
+					if (rs.next()) {
+						count = rs.getInt(1);
 					}
 				}
 			}
-		} catch (SQLException ex) {
-			System.getLogger(RegistrationStudent.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-		}
 
+			if (count > 0) {
+				JOptionPane.showMessageDialog(null, "LRN already exists in the database!", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+
+			// --- B. INSERT into student table ---
+			String sqlStudent = "INSERT INTO student(LRN, FirstName, LastName, Sex, Weight, Height, Grade, Section) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			studentPst = tempCon.prepareStatement(sqlStudent);
+			studentPst.setString(1, lrn);
+			studentPst.setString(2, firstName);
+			studentPst.setString(3, lastName);
+			studentPst.setString(4, sex);
+			studentPst.setString(5, weight);
+			studentPst.setString(6, height);
+			studentPst.setString(7, grade);
+			studentPst.setString(8, section);
+
+			int studentResult = studentPst.executeUpdate();
+
+			// --- C. INSERT into diagnostics table ---
+			if (studentResult > 0) {
+				String newFullName = firstName + " " + lastName;
+				String sqlDiagnostic = "INSERT INTO diagnostics (student_lrn_fk, student_name, diagnostic_notes) VALUES (?, ?, ?)";
+				diagnosticPst = tempCon.prepareStatement(sqlDiagnostic);
+
+				diagnosticPst.setString(1, lrn); // Link using the LRN
+				diagnosticPst.setString(2, newFullName);
+				// This calls the method from the other class, which is good practice!
+				String initialNotes = "Student registered on " + new java.util.Date().toString() + ". Awaiting clinic visit.";
+				diagnosticPst.setString(3, initialNotes);
+
+				int diagnosticResult = diagnosticPst.executeUpdate();
+
+				// --- D. COMMIT TRANSACTION ---
+				if (diagnosticResult > 0) {
+					tempCon.commit(); // Save both changes permanently
+					JOptionPane.showMessageDialog(this, "Registration successful ");
+
+					// Clear fields
+					LRN.setText("");
+					regFirstName.setText("");
+					regLastName.setText("");
+					Sex.setText("");
+					Weight.setText("");
+					Height.setText("");
+					Grade.setText("");
+					Section.setText("");
+
+					// Refresh StudentData if it's open
+					refreshStudentDataIfOpen();
+
+					this.dispose();
+					// 🚨 OPTIONAL: If the nurse consultation frame is open, you should refresh it.
+					// This requires a way to access the active instance of NurseConsultationFrame.
+					// e.g., NurseConsultationFrame.getInstance().refreshDiagnosticsTable();
+
+				} else {
+					tempCon.rollback();
+					JOptionPane.showMessageDialog(this, "Registration failed: Diagnostics record could not be created. Changes reverted.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		} catch (SQLException ex) {
+			// --- E. ERROR HANDLING & ROLLBACK ---
+			try {
+				if (transactionStarted && tempCon != null) {
+					tempCon.rollback(); // Rollback any changes
+				}
+			} catch (SQLException rollbackEx) {
+				logger.log(Level.SEVERE, "Rollback failed", rollbackEx);
+			}
+			logger.log(Level.SEVERE, "Registration SQL Error", ex);
+			JOptionPane.showMessageDialog(this, "A database error occurred during registration: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+
+		} finally {
+			// --- F. ENSURE RESOURCES ARE CLOSED AND STATE IS RESET ---
+			try {
+				if (studentPst != null) {
+					studentPst.close();
+				}
+				if (diagnosticPst != null) {
+					diagnosticPst.close();
+				}
+				if (tempCon != null && transactionStarted) {
+					tempCon.setAutoCommit(true); // Reset autocommit
+				}
+			} catch (SQLException closeEx) {
+				logger.log(Level.SEVERE, "Resource close error", closeEx);
+			}
+		}
 
         }//GEN-LAST:event_registerActionPerformed
 
@@ -423,7 +517,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void regLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regLastNameFocusGained
 		// TODO add your handling code here:
-		if (regLastName.getText().equals("Age")) {
+		if (regLastName.getText().equals("LastName")) {
 			regLastName.setText("");
 			regLastName.setForeground(new Color(0, 0, 0));
 		}
@@ -432,7 +526,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
         private void regLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_regLastNameFocusLost
 		// TODO add your handling code here:
 		if (regLastName.getText().equals("")) {
-			regLastName.setText("Age");
+			regLastName.setText("LastName");
 			regLastName.setForeground(new Color(153, 153, 153));
 		} else {
 			regLastName.setForeground(new Color(0, 0, 0));
@@ -442,7 +536,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void WeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WeightFocusGained
 		// TODO add your handling code here:
-		if (Weight.getText().equals("Department")) {
+		if (Weight.getText().equals("Weight (Kg)")) {
 			Weight.setText("");
 			Weight.setForeground(new Color(0, 0, 0));
 		}
@@ -452,7 +546,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
         private void WeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_WeightFocusLost
 		// TODO add your handling code here:
 		if (Weight.getText().equals("")) {
-			Weight.setText("Department");
+			Weight.setText("Weight (Kg)");
 			Weight.setForeground(new Color(153, 153, 153));
 		} else {
 			Weight.setForeground(new Color(0, 0, 0));
@@ -506,10 +600,20 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void AgeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AgeFocusGained
 		// TODO add your handling code here:
+		if (Age.getText().equals("Age")) {
+			Age.setText("");
+			Age.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_AgeFocusGained
 
         private void AgeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AgeFocusLost
 		// TODO add your handling code here:
+		if (Age.getText().equals("")) {
+			Age.setText("Age");
+			Age.setForeground(new Color(153, 153, 153));
+		} else {
+			Age.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_AgeFocusLost
 
         private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
@@ -518,10 +622,20 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void SectionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SectionFocusGained
 		// TODO add your handling code here:
+		if (Section.getText().equals("Section")) {
+			Section.setText("");
+			Section.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_SectionFocusGained
 
         private void SectionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SectionFocusLost
 		// TODO add your handling code here:
+		if (Section.getText().equals("")) {
+			Section.setText("Section");
+			Section.setForeground(new Color(153, 153, 153));
+		} else {
+			Section.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_SectionFocusLost
 
         private void SectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SectionActionPerformed
@@ -530,10 +644,20 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void HeightFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_HeightFocusGained
 		// TODO add your handling code here:
+		if (Height.getText().equals("Height (Cm)")) {
+			Height.setText("");
+			Height.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_HeightFocusGained
 
         private void HeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_HeightFocusLost
 		// TODO add your handling code here:
+		if (Height.getText().equals("")) {
+			Height.setText("Height (Cm)");
+			Height.setForeground(new Color(153, 153, 153));
+		} else {
+			Height.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_HeightFocusLost
 
         private void HeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HeightActionPerformed
@@ -542,15 +666,30 @@ public class RegistrationStudent extends javax.swing.JFrame {
 
         private void GradeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GradeFocusGained
 		// TODO add your handling code here:
+		if (Grade.getText().equals("Grade")) {
+			Grade.setText("");
+			Grade.setForeground(new Color(0, 0, 0));
+		}
         }//GEN-LAST:event_GradeFocusGained
 
         private void GradeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_GradeFocusLost
-		// TODO add your handling code here:
+		// TODO add your handling code here:if (Sex.getText().equals("Sex")) {
+		if (Grade.getText().equals("")) {
+			Grade.setText("Grade");
+			Grade.setForeground(new Color(153, 153, 153));
+		} else {
+			Grade.setForeground(new Color(0, 0, 0));
+		}
+
         }//GEN-LAST:event_GradeFocusLost
 
         private void GradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GradeActionPerformed
 		// TODO add your handling code here:
         }//GEN-LAST:event_GradeActionPerformed
+
+        private void HeightAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_HeightAncestorAdded
+		// TODO add your handling code here:
+        }//GEN-LAST:event_HeightAncestorAdded
 
 	/**
 	 * @param args the command line arguments

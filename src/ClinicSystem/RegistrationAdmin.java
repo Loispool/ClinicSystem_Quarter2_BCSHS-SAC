@@ -34,13 +34,13 @@ public class RegistrationAdmin extends javax.swing.JFrame {
     public RegistrationAdmin() {
         initComponents();
         Connect();
+	violetBg.setBackground(new Color(38,26,114,150));
     }
 
     public final void Connect() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/admin_data", "root", "");
-        } catch (ClassNotFoundException | SQLException ex) {
+            con = DatabaseConnector.getAdminConnection();
+        } catch (SQLException ex) {
             System.getLogger(RegistrationAdmin.class.getName()).log(System.Logger.Level.ERROR,
                     (String) null, ex);
         }
@@ -57,7 +57,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
                 jPanel3 = new javax.swing.JPanel();
                 jPanel1 = new javax.swing.JPanel();
-                jPanel2 = new javax.swing.JPanel();
+                violetBg = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 employmentId = new javax.swing.JTextField();
                 eyeClosedConPass = new javax.swing.JLabel();
@@ -69,8 +69,9 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 regFirstName = new javax.swing.JTextField();
                 regLastName = new javax.swing.JTextField();
                 register = new javax.swing.JButton();
-                jPanel4 = new javax.swing.JPanel();
+                alreadyRegisteredBtn = new javax.swing.JLabel();
                 jLabel2 = new javax.swing.JLabel();
+                jLabel3 = new javax.swing.JLabel();
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
@@ -89,13 +90,13 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 jPanel1.setForeground(new java.awt.Color(102, 102, 102));
                 jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                jPanel2.setBackground(new java.awt.Color(38, 26, 114));
-                jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+                violetBg.setBackground(new java.awt.Color(38, 26, 114));
+                violetBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 jLabel1.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
                 jLabel1.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel1.setText("Register");
-                jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+                violetBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
                 employmentId.setForeground(new java.awt.Color(153, 153, 153));
                 employmentId.setText("Employment ID");
@@ -112,7 +113,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 employmentIdActionPerformed(evt);
                         }
                 });
-                jPanel2.add(employmentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 180, 40));
+                violetBg.add(employmentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 180, 40));
 
                 eyeClosedConPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"))); // NOI18N
                 eyeClosedConPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +124,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 eyeClosedConPassMouseReleased(evt);
                         }
                 });
-                jPanel2.add(eyeClosedConPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, -1, -1));
+                violetBg.add(eyeClosedConPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
 
                 eyeClosedPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"))); // NOI18N
                 eyeClosedPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,7 +138,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 eyeClosedPassMouseReleased(evt);
                         }
                 });
-                jPanel2.add(eyeClosedPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, -1));
+                violetBg.add(eyeClosedPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
 
                 confirmPass.setText("Confirm Password");
                 confirmPass.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -148,7 +149,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 confirmPassFocusLost(evt);
                         }
                 });
-                jPanel2.add(confirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 40));
+                violetBg.add(confirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 180, 40));
 
                 regPass.setText("Password");
                 regPass.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -164,7 +165,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 regPassFocusLost(evt);
                         }
                 });
-                jPanel2.add(regPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, 40));
+                violetBg.add(regPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 180, 40));
 
                 department.setForeground(new java.awt.Color(153, 153, 153));
                 department.setText("Department");
@@ -181,7 +182,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 departmentActionPerformed(evt);
                         }
                 });
-                jPanel2.add(department, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 180, 40));
+                violetBg.add(department, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 180, 40));
 
                 regUserName.setForeground(new java.awt.Color(153, 153, 153));
                 regUserName.setText("Username");
@@ -193,7 +194,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 regUserNameFocusLost(evt);
                         }
                 });
-                jPanel2.add(regUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 180, 40));
+                violetBg.add(regUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 180, 40));
 
                 regFirstName.setForeground(new java.awt.Color(153, 153, 153));
                 regFirstName.setText("FirstName");
@@ -212,7 +213,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 regFirstNameActionPerformed(evt);
                         }
                 });
-                jPanel2.add(regFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, 40));
+                violetBg.add(regFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 80, 40));
 
                 regLastName.setForeground(new java.awt.Color(153, 153, 153));
                 regLastName.setText("LastName");
@@ -231,49 +232,57 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                                 regLastNameActionPerformed(evt);
                         }
                 });
-                jPanel2.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, 40));
+                violetBg.add(regLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, 40));
 
+                register.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
                 register.setForeground(new java.awt.Color(38, 26, 114));
                 register.setText("Register");
+                register.setBorder(null);
                 register.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 registerActionPerformed(evt);
                         }
                 });
-                jPanel2.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+                violetBg.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 110, 40));
 
-                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/logo_school-removebg-preview.png"))); // NOI18N
+                alreadyRegisteredBtn.setBackground(new java.awt.Color(38, 26, 114));
+                alreadyRegisteredBtn.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+                alreadyRegisteredBtn.setForeground(new java.awt.Color(255, 255, 255));
+                alreadyRegisteredBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                alreadyRegisteredBtn.setText("Already registered? LogIn");
+                alreadyRegisteredBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+                alreadyRegisteredBtn.setOpaque(true);
+                alreadyRegisteredBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                alreadyRegisteredBtnMouseClicked(evt);
+                        }
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                alreadyRegisteredBtnMouseEntered(evt);
+                        }
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                alreadyRegisteredBtnMouseExited(evt);
+                        }
+                });
+                violetBg.add(alreadyRegisteredBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 180, -1));
 
-                javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-                jPanel4.setLayout(jPanel4Layout);
-                jPanel4Layout.setHorizontalGroup(
-                        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addGap(21, 21, 21))
-                );
-                jPanel4Layout.setVerticalGroup(
-                        jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)
-                                .addContainerGap(378, Short.MAX_VALUE))
-                );
+                jPanel1.add(violetBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 470));
 
-                jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, 470));
+                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911681013-removebg-preview.png"))); // NOI18N
+                jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 250, 480));
 
-                jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 340, 480));
+                jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911680989_1.jpg"))); // NOI18N
+                jLabel3.setText("jLabel3");
+                jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 330, 480));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 );
 
                 pack();
@@ -568,6 +577,30 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 // TODO add your handling code here:
         }//GEN-LAST:event_eyeClosedPassMouseExited
 
+        private void alreadyRegisteredBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alreadyRegisteredBtnMouseEntered
+                // TODO add your handling code here:
+		 alreadyRegisteredBtn.setForeground(Color.black);
+        }//GEN-LAST:event_alreadyRegisteredBtnMouseEntered
+
+        private void alreadyRegisteredBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alreadyRegisteredBtnMouseExited
+                // TODO add your handling code here:
+		alreadyRegisteredBtn.setForeground(Color.white);
+        }//GEN-LAST:event_alreadyRegisteredBtnMouseExited
+
+        private void alreadyRegisteredBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alreadyRegisteredBtnMouseClicked
+                // TODO add your handling code here:
+		LogIn alreadyRegistered = null;
+	    try {
+		    alreadyRegistered = new LogIn();
+	    } catch (ClassNotFoundException ex) {
+		    System.getLogger(RegistrationAdmin.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+	    } catch (SQLException ex) {
+		    System.getLogger(RegistrationAdmin.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+	    }
+		alreadyRegistered.setVisible(true);
+		this.dispose();
+        }//GEN-LAST:event_alreadyRegisteredBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -594,6 +627,7 @@ public class RegistrationAdmin extends javax.swing.JFrame {
     }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JLabel alreadyRegisteredBtn;
         private javax.swing.JPasswordField confirmPass;
         private javax.swing.JTextField department;
         private javax.swing.JTextField employmentId;
@@ -601,14 +635,14 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         private javax.swing.JLabel eyeClosedPass;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
         private javax.swing.JPanel jPanel1;
-        private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel jPanel3;
-        private javax.swing.JPanel jPanel4;
         private javax.swing.JTextField regFirstName;
         private javax.swing.JTextField regLastName;
         private javax.swing.JPasswordField regPass;
         private javax.swing.JTextField regUserName;
         private javax.swing.JButton register;
+        private javax.swing.JPanel violetBg;
         // End of variables declaration//GEN-END:variables
 }

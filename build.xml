@@ -1,73 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- You may freely edit this file. See commented blocks below for -->
-<!-- some examples of how to customize the build. -->
-<!-- (If you delete it and reopen the project it will be recreated.) -->
-<!-- By default, only the Clean and Build commands use this build script. -->
-<!-- Commands such as Run, Debug, and Test only use this build script if -->
-<!-- the Compile on Save feature is turned off for the project. -->
-<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
-<!-- in the project's Project Properties dialog box.-->
 <project name="SystemForClinic" default="default" basedir=".">
     <description>Builds, tests, and runs the project SystemForClinic.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- Custom properties -->
+    <property name="dist.jar.with.libs" value="${dist.dir}/ClinicSystemPortable.jar"/>
+
     <!--
-
-    There exist several targets which are by default empty and which can be 
-    used for execution of your tasks. These targets are usually executed 
-    before and after some main targets. They are: 
-
-      -pre-init:                 called before initialization of project properties
-      -post-init:                called after initialization of project properties
-      -pre-compile:              called before javac compilation
-      -post-compile:             called after javac compilation
-      -pre-compile-single:       called before javac compilation of single file
-      -post-compile-single:      called after javac compilation of single file
-      -pre-compile-test:         called before javac compilation of JUnit tests
-      -post-compile-test:        called after javac compilation of JUnit tests
-      -pre-compile-test-single:  called before javac compilation of single JUnit test
-      -post-compile-test-single: called after javac compilation of single JUunit test
-      -pre-jar:                  called before JAR building
-      -post-jar:                 called after JAR building
-      -post-clean:               called after cleaning build products
-
-    (Targets beginning with '-' are not intended to be called on their own.)
-
-    Example of inserting an obfuscator after compilation could look like this:
-
-        <target name="-post-compile">
-            <obfuscate>
-                <fileset dir="${build.classes.dir}"/>
-            </obfuscate>
-        </target>
-
-    For list of available properties check the imported 
-    nbproject/build-impl.xml file. 
-
-
-    Another way to customize the build is by overriding existing main targets.
-    The targets of interest are: 
-
-      -init-macrodef-javac:     defines macro for javac compilation
-      -init-macrodef-junit:     defines macro for junit execution
-      -init-macrodef-debug:     defines macro for class debugging
-      -init-macrodef-java:      defines macro for class execution
-      -do-jar:                  JAR building
-      run:                      execution of project 
-      -javadoc-build:           Javadoc generation
-      test-report:              JUnit report generation
-
-    An example of overriding the target for project execution could look like this:
-
-        <target name="run" depends="SystemForClinic-impl.jar">
-            <exec dir="bin" executable="launcher.exe">
-                <arg file="${dist.jar}"/>
-            </exec>
-        </target>
-
-    Notice that the overridden target depends on the jar target and not only on 
-    the compile target as the regular run target does. Again, for a list of available 
-    properties which you can use, check the target you are overriding in the
-    nbproject/build-impl.xml file. 
-
+    ============================================
+    CUSTOM TARGET: Create Portable JAR
+    ============================================
+    This creates a single JAR file with all dependencies included
+    Run with: ant package-portable
     -->
+    <target name="package-portable" depends="jar">
+        <echo message="==========================================="/>
+        <echo message="Creating Portable JAR with all dependencies"/>
+        <echo message="==========================================="/>
+
+        <!-- Create temporary directory for extraction -->
+        <mkdir dir="${build.dir}/lib-extracted"/>
+
+        <!-- Extract all library JARs -->
+        <unzip dest="${build.dir}/lib-extracted">
+            <fileset dir="lib">
+                <include name="**/*.jar"/>
+            </fileset>
+            <!-- Exclude signature files that can cause conflicts -->
+            <patternset>
+                <exclude name="META-INF/*.SF"/>
+                <exclude name="META-INF/*.DSA"/>
+                <exclude name="META-INF/*.RSA"/>
+            </patternset>
+        </unzip>
+
+        <!-- Copy compiled classes -->
+        <copy todir="${build.dir}/lib-extracted">
+            <fileset dir="${build.classes.dir}"/>
+        </copy>
+
+        <!-- Create the portable JAR -->
+        <jar destfile="${dist.jar.with.libs}"
+             basedir="${build.dir}/lib-extracted">
+            <manifest>
+                <attribute name="Main-Class" value="ClinicSystem.LogIn"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Implementation-Title" value="Clinic System"/>
+                <attribute name="Implementation-Version" value="1.0"/>
+            </manifest>
+        </jar>
+
+        <!-- Clean up temporary directory -->
+        <delete dir="${build.dir}/lib-extracted"/>
+
+        <echo message=""/>
+        <echo message="==========================================="/>
+        <echo message="✓ SUCCESS! Portable JAR created at:"/>
+        <echo message="${dist.jar.with.libs}"/>
+        <echo message="==========================================="/>
+        <echo message=""/>
+        <echo message="Next steps:"/>
+        <echo message="1. Copy ${dist.jar.with.libs} to your distribution folder"/>
+        <echo message="2. Include admin_data.sql and students_data.sql"/>
+        <echo message="3. Create images/admin/ and images/students/ folders"/>
+        <echo message="4. Add run.bat file"/>
+        <echo message="==========================================="/>
+    </target>
+
+    <!--
+    ============================================
+    CUSTOM TARGET: Create Complete Distribution Package
+    ============================================
+    This creates a ready-to-distribute folder
+    Run with: ant create-distribution
+    -->
+    <target name="create-distribution" depends="package-portable">
+        <echo message="==========================================="/>
+        <echo message="Creating Complete Distribution Package"/>
+        <echo message="==========================================="/>
+
+        <!-- Create distribution folder structure -->
+        <property name="release.dir" value="${dist.dir}/ClinicSystem_Portable"/>
+        <mkdir dir="${release.dir}"/>
+        <mkdir dir="${release.dir}/images"/>
+        <mkdir dir="${release.dir}/images/admin"/>
+        <mkdir dir="${release.dir}/images/students"/>
+
+        <!-- Copy the portable JAR -->
+        <copy file="${dist.jar.with.libs}" tofile="${release.dir}/ClinicSystem.jar"/>
+
+        <!-- Copy SQL files if they exist -->
+        <copy todir="${release.dir}" failonerror="false">
+            <fileset dir="${basedir}">
+                <include name="admin_data.sql"/>
+                <include name="students_data.sql"/>
+            </fileset>
+        </copy>
+
+        <!-- Create run.bat file -->
+        <echo file="${release.dir}/run.bat">@echo off
+            echo ========================================
+            echo Starting Clinic System...
+            echo ========================================
+            echo.
+
+            REM Check if Java is installed
+            java -version >nul 2>1
+            if %ERRORLEVEL% NEQ 0 (
+            echo ERROR: Java is not installed!
+            echo.
+            echo Please install Java 8 or higher from:
+            echo https://www.java.com/download
+            echo.
+            pause
+            exit /b 1
+            )
+
+            REM Run the application
+            java -jar ClinicSystem.jar
+
+            REM Check if application crashed
+            if %ERRORLEVEL% NEQ 0 (
+            echo.
+            echo ========================================
+            echo Application closed with errors
+            echo ========================================
+            pause
+            )
+        </echo>
+
+        <!-- Create README.txt file -->
+        <echo file="${release.dir}/README.txt">========================================
+            CLINIC SYSTEM - Installation Guide
+            ========================================
+
+            SYSTEM REQUIREMENTS:
+            - Windows 7 or higher
+            - Java 8 or higher (https://java.com/download)
+
+            INSTALLATION STEPS:
+            1. Make sure Java is installed on your computer
+            2. Extract this entire folder to any location
+            3. Double-click "run.bat" to start the application
+
+            FIRST RUN:
+            - On first run, the system will automatically create the database
+            - This may take 10-30 seconds
+            - Please be patient!
+
+            FOLDER STRUCTURE:
+            - ClinicSystem.jar       : Main application file
+            - admin_data.sql         : Admin database structure
+            - students_data.sql      : Student database structure
+            - database/              : Created automatically (database files)
+            - images/                : User profile pictures
+            - run.bat                : Application launcher
+
+            TROUBLESHOOTING:
+            - If "run.bat" doesn't work, make sure Java is installed
+            - If database initialization fails, check that SQL files are present
+            - If images don't load, check the images/ folder permissions
+
+            SUPPORT:
+            For technical support, contact your system administrator.
+
+            ========================================
+            Version 1.0
+            ========================================
+        </echo>
+
+        <!-- Create run.sh for Linux/Mac (optional) -->
+        <echo file="${release.dir}/run.sh">#!/bin/bash
+            echo "========================================"
+            echo "Starting Clinic System..."
+            echo "========================================"
+            echo ""
+
+            # Check if Java is installed
+            if ! command -v java &gt; /dev/null; then
+            echo "ERROR: Java is not installed!"
+            echo ""
+            echo "Please install Java 8 or higher"
+            read -p "Press Enter to exit..."
+            exit 1
+            fi
+
+            # Run the application
+            java -jar ClinicSystem.jar
+
+            # Check if application crashed
+            if [ $? -ne 0 ]; then
+            echo ""
+            echo "========================================"
+            echo "Application closed with errors"
+            echo "========================================"
+            read -p "Press Enter to exit..."
+            fi
+        </echo>
+
+        <!-- Make run.sh executable (Linux/Mac) -->
+        <chmod file="${release.dir}/run.sh" perm="755" osfamily="unix" failonerror="false"/>
+
+        <echo message=""/>
+        <echo message="==========================================="/>
+        <echo message="✓ COMPLETE! Distribution package created at:"/>
+        <echo message="${release.dir}"/>
+        <echo message="==========================================="/>
+        <echo message=""/>
+        <echo message="Package contents:"/>
+        <echo message="- ClinicSystem.jar (Main application)"/>
+        <echo message="- run.bat (Windows launcher)"/>
+        <echo message="- run.sh (Linux/Mac launcher)"/>
+        <echo message="- README.txt (Installation guide)"/>
+        <echo message="- images/ folder structure"/>
+        <echo message=""/>
+        <echo message="⚠️  IMPORTANT: Copy your SQL files to:"/>
+        <echo message="${release.dir}/"/>
+        <echo message="==========================================="/>
+    </target>
+
+    <!--
+    ============================================
+    CUSTOM TARGET: Clean distribution files
+    ============================================
+    -->
+    <target name="clean-dist" depends="clean">
+        <delete dir="${dist.dir}/ClinicSystem_Portable"/>
+        <delete file="${dist.jar.with.libs}"/>
+        <echo message="✓ Distribution files cleaned"/>
+    </target>
+
 </project>

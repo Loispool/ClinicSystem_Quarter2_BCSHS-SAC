@@ -11,7 +11,7 @@ import java.awt.Color;
  * @author Admin
  */
 public class ClinicHomePage extends javax.swing.JFrame {
-	
+
 	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClinicHomePage.class.getName());
 
 	/**
@@ -19,9 +19,10 @@ public class ClinicHomePage extends javax.swing.JFrame {
 	 */
 	public ClinicHomePage() {
 		initComponents();
-		greyBg.setBackground(new Color(153,153,153,150));
-		BcshsSactxt.setBackground(new Color(153,153,153));
-		panelMainBg.setBackground(new Color(204,204,204,100));
+		greyBg.setBackground(new Color(153, 153, 153, 150));
+		BcshsSactxt.setBackground(new Color(153, 153, 153));
+		panelMainBg.setBackground(new Color(204, 204, 204, 100));
+		
 	}
 
 	/**
@@ -34,8 +35,6 @@ public class ClinicHomePage extends javax.swing.JFrame {
         private void initComponents() {
 
                 jPanel2 = new javax.swing.JPanel();
-                ClinicSys = new javax.swing.JLabel();
-                jButton5 = new javax.swing.JButton();
                 greyBg = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 jPanel1 = new javax.swing.JPanel();
@@ -45,6 +44,8 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jButton4 = new javax.swing.JButton();
                 jButton7 = new javax.swing.JButton();
                 jButton3 = new javax.swing.JButton();
+                ClinicSys = new javax.swing.JLabel();
+                databaseStudentBtn = new javax.swing.JButton();
                 jLabel2 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,18 +55,10 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jPanel2.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
                 jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                ClinicSys.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-                ClinicSys.setText("Clinic System");
-                jPanel2.add(ClinicSys, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 410, -1));
-
-                jButton5.setBackground(new java.awt.Color(115, 115, 115));
-                jButton5.setForeground(new java.awt.Color(255, 255, 255));
-                jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 50));
-
                 greyBg.setBackground(new java.awt.Color(153, 153, 153));
                 greyBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/logo_school-removebg-preview.png"))); // NOI18N
+                jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/logo_school-removebg-preview.png"))); // NOI18N
                 greyBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
 
                 jPanel2.add(greyBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 100));
@@ -113,6 +106,19 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jButton3.setBackground(new java.awt.Color(115, 115, 115));
                 jButton3.setForeground(new java.awt.Color(255, 255, 255));
 
+                ClinicSys.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+                ClinicSys.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                ClinicSys.setText("Clinic System");
+
+                databaseStudentBtn.setBackground(new java.awt.Color(115, 115, 115));
+                databaseStudentBtn.setForeground(new java.awt.Color(255, 255, 255));
+                databaseStudentBtn.setText("Students Basic Information");
+                databaseStudentBtn.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                databaseStudentBtnActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout panelMainBgLayout = new javax.swing.GroupLayout(panelMainBg);
                 panelMainBg.setLayout(panelMainBgLayout);
                 panelMainBgLayout.setHorizontalGroup(
@@ -127,11 +133,23 @@ public class ClinicHomePage extends javax.swing.JFrame {
                                 .addGap(47, 47, 47)
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ClinicSys, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(174, 174, 174))
+                        .addGroup(panelMainBgLayout.createSequentialGroup()
+                                .addGap(283, 283, 283)
+                                .addComponent(databaseStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panelMainBgLayout.setVerticalGroup(
                         panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
-                                .addContainerGap(365, Short.MAX_VALUE)
+                                .addContainerGap(179, Short.MAX_VALUE)
+                                .addComponent(ClinicSys)
+                                .addGap(35, 35, 35)
+                                .addComponent(databaseStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
                                 .addGroup(panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,7 +160,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
                 jPanel2.add(panelMainBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 460));
 
-                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/6226336049911680989.jpg"))); // NOI18N
+                jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911680989.jpg"))); // NOI18N
                 jLabel2.setText("jLabel2");
                 jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 430));
 
@@ -151,6 +169,15 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 pack();
                 setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
+
+        private void databaseStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseStudentBtnActionPerformed
+		// TODO add your handling code here:
+		StudentData studentDatabase = new StudentData();
+		studentDatabase.setVisible(true);
+		this.dispose();
+
+
+        }//GEN-LAST:event_databaseStudentBtnActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -180,10 +207,10 @@ public class ClinicHomePage extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel BcshsSactxt;
         private javax.swing.JLabel ClinicSys;
+        private javax.swing.JButton databaseStudentBtn;
         private javax.swing.JPanel greyBg;
         private javax.swing.JButton jButton3;
         private javax.swing.JButton jButton4;
-        private javax.swing.JButton jButton5;
         private javax.swing.JButton jButton6;
         private javax.swing.JButton jButton7;
         private javax.swing.JLabel jLabel1;
@@ -192,4 +219,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel panelMainBg;
         // End of variables declaration//GEN-END:variables
+
+	
+
 }
