@@ -62,11 +62,11 @@ public class LogIn extends javax.swing.JFrame {
                 jPanel3 = new javax.swing.JPanel();
                 NameOfThePage = new javax.swing.JLabel();
                 LogInNameLogo = new javax.swing.JLabel();
-                LogInUserName = new javax.swing.JTextField();
                 LogInBtn = new javax.swing.JButton();
                 eyeClosedPass = new javax.swing.JLabel();
                 LogInPass = new javax.swing.JPasswordField();
                 NewUserBtn = new javax.swing.JButton();
+                LogInUserName = new ClinicSystem.RoundedTextField();
                 violetBg = new javax.swing.JPanel();
                 jLabel4 = new javax.swing.JLabel();
                 jLabel2 = new javax.swing.JLabel();
@@ -112,28 +112,6 @@ public class LogIn extends javax.swing.JFrame {
                 LogInNameLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911681013-removebg-preview(1).png"))); // NOI18N
                 jPanel3.add(LogInNameLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 180, 150));
 
-                LogInUserName.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
-                LogInUserName.setForeground(new java.awt.Color(102, 102, 102));
-                LogInUserName.setText("Enter Username");
-                LogInUserName.setToolTipText("");
-                LogInUserName.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                LogInUserName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-                LogInUserName.setOpaque(true);
-                LogInUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                LogInUserNameFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                LogInUserNameFocusLost(evt);
-                        }
-                });
-                LogInUserName.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                LogInUserNameActionPerformed(evt);
-                        }
-                });
-                jPanel3.add(LogInUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 180, 40));
-
                 LogInBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 LogInBtn.setForeground(new java.awt.Color(38, 0, 114));
                 LogInBtn.setText("Login");
@@ -158,7 +136,7 @@ public class LogIn extends javax.swing.JFrame {
                 LogInPass.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
                 LogInPass.setText("Enter Password");
                 LogInPass.setActionCommand("<Not Set>");
-                LogInPass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                LogInPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
                 LogInPass.addContainerListener(new java.awt.event.ContainerAdapter() {
                         public void componentAdded(java.awt.event.ContainerEvent evt) {
                                 LogInPassComponentAdded(evt);
@@ -202,6 +180,19 @@ public class LogIn extends javax.swing.JFrame {
                         }
                 });
                 jPanel3.add(NewUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 20));
+
+                LogInUserName.setBorder(null);
+                LogInUserName.setForeground(new java.awt.Color(204, 204, 204));
+                LogInUserName.setText("Enter Username");
+                LogInUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                LogInUserNameFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                LogInUserNameFocusLost(evt);
+                        }
+                });
+                jPanel3.add(LogInUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 180, 40));
 
                 jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 330, 420));
 
@@ -268,27 +259,6 @@ public class LogIn extends javax.swing.JFrame {
 
         }//GEN-LAST:event_LogInPassFocusGained
 
-        private void LogInUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInUserNameActionPerformed
-		// TODO add your handling code here:
-
-        }//GEN-LAST:event_LogInUserNameActionPerformed
-
-        private void LogInUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LogInUserNameFocusLost
-		// TODO add your handling code here:
-		if (LogInUserName.getText().equals("")) {
-			LogInUserName.setText("Enter Username");
-			LogInUserName.setForeground(new Color(153, 153, 153));
-		}
-        }//GEN-LAST:event_LogInUserNameFocusLost
-
-        private void LogInUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LogInUserNameFocusGained
-		// TODO add your handling code here:
-		if (LogInUserName.getText().equals("Enter Username")) {
-			LogInUserName.setText("");
-			LogInUserName.setForeground(new Color(0, 0, 0));
-		}
-        }//GEN-LAST:event_LogInUserNameFocusGained
-
         private void LogInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInBtnActionPerformed
 		// TODO add your handling code here:
 		String Username = LogInUserName.getText();
@@ -296,11 +266,12 @@ public class LogIn extends javax.swing.JFrame {
 
 		try {
 			//if walang lama; else meron
-			if (Username.isEmpty() || Password.isEmpty()) {
+			if (Username.contains("Enter Username") || Password.contains("Enter Password")) {
 				JOptionPane.showMessageDialog(this, "Fill the required field first!");
-			} else {
+				
+			} else  {
 
-				pst = con.prepareStatement("select * from adminregistration where binary UserName=? AND binary Password=?");
+				pst = con.prepareStatement("select * from adminregistration where UserName=? AND  Password=?");
 				pst.setString(1, Username);
 				pst.setString(2, Password);
 				rs = pst.executeQuery();
@@ -314,11 +285,13 @@ public class LogIn extends javax.swing.JFrame {
 				} else {
 					// Failed Login (No matching record found)
 					JOptionPane.showMessageDialog(this, "Invalid Username or Password.", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
+					pst.close();
 				}
 
 			}
 		} catch (SQLException ex) {
 			Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
+				JOptionPane.showMessageDialog(this, "Error", "Authentication Failed", JOptionPane.ERROR_MESSAGE);
 		}
         }//GEN-LAST:event_LogInBtnActionPerformed
 
@@ -337,8 +310,8 @@ public class LogIn extends javax.swing.JFrame {
 	    ImageIcon icon = new ImageIcon(image);
 	    icon.getImage().flush();
 	    eyeClosedPass.setIcon(icon);
-	    if (LogInPass.getText().equals("Enter Username")) {
-		    LogInUserName.setText("");
+	    if (LogInPass.getText().equals("Enter Password")) {
+		    LogInPass.setText("");
 	    } else {
 		    LogInPass.setEchoChar('*');
 	    }
@@ -366,6 +339,22 @@ public class LogIn extends javax.swing.JFrame {
 		// TODO add your handling code here:
 		NewUserBtn.setForeground(new Color(255, 255, 255));
         }//GEN-LAST:event_NewUserBtnMouseExited
+
+        private void LogInUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LogInUserNameFocusGained
+                // TODO add your handling code here:
+		if (LogInUserName.getText().equals("Enter Username")) {
+                        LogInUserName.setText("");
+                        LogInUserName.setForeground(new Color(0, 0, 0));
+                }
+        }//GEN-LAST:event_LogInUserNameFocusGained
+
+        private void LogInUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LogInUserNameFocusLost
+                // TODO add your handling code here:
+		if (LogInUserName.getText().equals("")) {
+                        LogInUserName.setText("Enter Username");
+                        LogInUserName.setForeground(new Color(153, 153, 153));
+                }
+        }//GEN-LAST:event_LogInUserNameFocusLost
 
 	/**
 	 * @param args the command line arguments
@@ -406,7 +395,7 @@ public class LogIn extends javax.swing.JFrame {
         private javax.swing.JButton LogInBtn;
         private javax.swing.JLabel LogInNameLogo;
         private javax.swing.JPasswordField LogInPass;
-        private javax.swing.JTextField LogInUserName;
+        private ClinicSystem.RoundedTextField LogInUserName;
         private javax.swing.JLabel NameOfThePage;
         private javax.swing.JButton NewUserBtn;
         private javax.swing.JLabel eyeClosedPass;
