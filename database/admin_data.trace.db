@@ -1,0 +1,21 @@
+2025-11-23 14:35:33.489819+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:37:19.230563+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:38:35.024180+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:38:59.591356+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:47:28.013720+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:48:58.256589+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]
+2025-11-23 14:57:54.017848+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from adminregistration where binary [*]UserName=? AND binary Password=?"; SQL statement:
+select * from adminregistration where binary UserName=? AND binary Password=? [42000-240]

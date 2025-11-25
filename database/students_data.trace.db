@@ -1,0 +1,21 @@
+2025-11-16 11:01:09.791552+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM student [42104-240]
+2025-11-16 11:02:41.858144+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM student [42104-240]
+2025-11-16 11:26:43.572589+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM student [42104-240]
+2025-11-16 11:28:20.543615+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM student WHERE LRN = ? [42104-240]
+2025-11-16 11:29:01.489171+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM student WHERE LRN = ? [42104-240]
+2025-11-16 11:29:03.873710+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM student WHERE LRN = ? [42104-240]
+2025-11-16 11:50:03.124097+08:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT COUNT(*) FROM student WHERE LRN = ? [42104-240]
