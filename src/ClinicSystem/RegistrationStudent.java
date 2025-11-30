@@ -76,16 +76,16 @@ public class RegistrationStudent extends javax.swing.JFrame {
                 jPanel1 = new javax.swing.JPanel();
                 jPanel2 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
-                LRN = new javax.swing.JTextField();
-                Weight = new javax.swing.JTextField();
-                regLastName = new javax.swing.JTextField();
-                Sex = new javax.swing.JTextField();
-                regFirstName = new javax.swing.JTextField();
+                LRN = new ClinicSystem.RoundedTextField();
+                Weight = new ClinicSystem.RoundedTextField();
+                regLastName = new ClinicSystem.RoundedTextField();
+                Sex = new ClinicSystem.RoundedTextField();
+                regFirstName = new ClinicSystem.RoundedTextField();
                 register = new javax.swing.JButton();
-                Age = new javax.swing.JTextField();
-                Section = new javax.swing.JTextField();
-                Height = new javax.swing.JTextField();
-                Grade = new javax.swing.JTextField();
+                Age = new ClinicSystem.RoundedTextField();
+                Section = new ClinicSystem.RoundedTextField();
+                Height = new ClinicSystem.RoundedTextField();
+                Grade = new ClinicSystem.RoundedTextField();
                 jPanel3 = new javax.swing.JPanel();
                 jLabel2 = new javax.swing.JLabel();
                 jLabel3 = new javax.swing.JLabel();
@@ -717,13 +717,13 @@ public class RegistrationStudent extends javax.swing.JFrame {
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JTextField Age;
-        private javax.swing.JTextField Grade;
-        private javax.swing.JTextField Height;
-        private javax.swing.JTextField LRN;
-        private javax.swing.JTextField Section;
-        private javax.swing.JTextField Sex;
-        private javax.swing.JTextField Weight;
+        private ClinicSystem.RoundedTextField Age;
+        private ClinicSystem.RoundedTextField Grade;
+        private ClinicSystem.RoundedTextField Height;
+        private ClinicSystem.RoundedTextField LRN;
+        private ClinicSystem.RoundedTextField Section;
+        private ClinicSystem.RoundedTextField Sex;
+        private ClinicSystem.RoundedTextField Weight;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
@@ -731,8 +731,8 @@ public class RegistrationStudent extends javax.swing.JFrame {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel jPanel3;
         private javax.swing.JLabel pictureBg;
-        private javax.swing.JTextField regFirstName;
-        private javax.swing.JTextField regLastName;
+        private ClinicSystem.RoundedTextField regFirstName;
+        private ClinicSystem.RoundedTextField regLastName;
         private javax.swing.JButton register;
         // End of variables declaration//GEN-END:variables
 }

@@ -43,6 +43,7 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
                 jScrollPane2 = new javax.swing.JScrollPane();
                 jTextArea1 = new javax.swing.JTextArea();
                 jButton1 = new javax.swing.JButton();
+                backToHome = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,13 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
                         }
                 });
 
+                backToHome.setText("Home");
+                backToHome.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                backToHomeActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
@@ -82,7 +90,10 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
                                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(66, 66, 66)
-                                                .addComponent(jButton1)))
+                                                .addComponent(jButton1))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addComponent(backToHome)))
                                 .addGap(279, 279, 279))
                 );
                 jPanel1Layout.setVerticalGroup(
@@ -93,6 +104,8 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101)
                                 .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(backToHome)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
@@ -112,6 +125,7 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
                 );
 
                 pack();
+                setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -192,6 +206,16 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
             jTextArea1.setText(currentNotes);
         }
     }//GEN-LAST:event_diagnosticsTableMouseClicked
+
+        private void backToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToHomeActionPerformed
+                // TODO add your handling code here:
+		
+	ClinicHomePage home = new ClinicHomePage();
+	
+	home.setVisible(true);
+	
+	this.dispose();
+        }//GEN-LAST:event_backToHomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,6 +307,7 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
     }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton backToHome;
         private javax.swing.JTable diagnosticsTable;
         private javax.swing.JButton jButton1;
         private javax.swing.JPanel jPanel1;

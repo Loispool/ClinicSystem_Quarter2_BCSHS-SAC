@@ -59,15 +59,15 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 jPanel1 = new javax.swing.JPanel();
                 violetBg = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
-                employmentId = new javax.swing.JTextField();
+                employmentId = new ClinicSystem.RoundedTextField();
                 eyeClosedConPass = new javax.swing.JLabel();
                 eyeClosedPass = new javax.swing.JLabel();
                 confirmPass = new javax.swing.JPasswordField();
                 regPass = new javax.swing.JPasswordField();
-                department = new javax.swing.JTextField();
-                regUserName = new javax.swing.JTextField();
-                regFirstName = new javax.swing.JTextField();
-                regLastName = new javax.swing.JTextField();
+                department = new ClinicSystem.RoundedTextField();
+                regUserName = new ClinicSystem.RoundedTextField();
+                regFirstName = new ClinicSystem.RoundedTextField();
+                regLastName = new ClinicSystem.RoundedTextField();
                 register = new javax.swing.JButton();
                 alreadyRegisteredBtn = new javax.swing.JLabel();
                 jLabel2 = new javax.swing.JLabel();
@@ -629,8 +629,8 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel alreadyRegisteredBtn;
         private javax.swing.JPasswordField confirmPass;
-        private javax.swing.JTextField department;
-        private javax.swing.JTextField employmentId;
+        private ClinicSystem.RoundedTextField department;
+        private ClinicSystem.RoundedTextField employmentId;
         private javax.swing.JLabel eyeClosedConPass;
         private javax.swing.JLabel eyeClosedPass;
         private javax.swing.JLabel jLabel1;
@@ -638,10 +638,10 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         private javax.swing.JLabel jLabel3;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel3;
-        private javax.swing.JTextField regFirstName;
-        private javax.swing.JTextField regLastName;
+        private ClinicSystem.RoundedTextField regFirstName;
+        private ClinicSystem.RoundedTextField regLastName;
         private javax.swing.JPasswordField regPass;
-        private javax.swing.JTextField regUserName;
+        private ClinicSystem.RoundedTextField regUserName;
         private javax.swing.JButton register;
         private javax.swing.JPanel violetBg;
         // End of variables declaration//GEN-END:variables

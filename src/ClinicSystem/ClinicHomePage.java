@@ -19,10 +19,11 @@ public class ClinicHomePage extends javax.swing.JFrame {
 	 */
 	public ClinicHomePage() {
 		initComponents();
+		loadProfilePicture();
 		greyBg.setBackground(new Color(153, 153, 153, 150));
 		BcshsSactxt.setBackground(new Color(153, 153, 153));
 		panelMainBg.setBackground(new Color(204, 204, 204, 100));
-		
+
 	}
 
 	/**
@@ -37,11 +38,12 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jPanel2 = new javax.swing.JPanel();
                 greyBg = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
+                Profile = new javax.swing.JLabel();
                 jPanel1 = new javax.swing.JPanel();
                 BcshsSactxt = new javax.swing.JLabel();
                 panelMainBg = new javax.swing.JPanel();
                 jButton6 = new javax.swing.JButton();
-                jButton4 = new javax.swing.JButton();
+                consultationFrame = new javax.swing.JButton();
                 jButton7 = new javax.swing.JButton();
                 jButton3 = new javax.swing.JButton();
                 ClinicSys = new javax.swing.JLabel();
@@ -60,6 +62,14 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
                 jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/logo_school-removebg-preview.png"))); // NOI18N
                 greyBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
+
+                Profile.setText("Profile");
+                Profile.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                ProfileMouseClicked(evt);
+                        }
+                });
+                greyBg.add(Profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, -1, -1));
 
                 jPanel2.add(greyBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 100));
 
@@ -97,8 +107,14 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jButton6.setBackground(new java.awt.Color(115, 115, 115));
                 jButton6.setForeground(new java.awt.Color(255, 255, 255));
 
-                jButton4.setBackground(new java.awt.Color(115, 115, 115));
-                jButton4.setForeground(new java.awt.Color(255, 255, 255));
+                consultationFrame.setBackground(new java.awt.Color(115, 115, 115));
+                consultationFrame.setForeground(new java.awt.Color(255, 255, 255));
+                consultationFrame.setText("Consultation");
+                consultationFrame.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                consultationFrameActionPerformed(evt);
+                        }
+                });
 
                 jButton7.setBackground(new java.awt.Color(115, 115, 115));
                 jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,7 +143,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(consultationFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(147, 147, 147)
                                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
@@ -153,7 +169,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
                                 .addGroup(panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(consultationFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(45, 45, 45))
                 );
@@ -178,6 +194,32 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
 
         }//GEN-LAST:event_databaseStudentBtnActionPerformed
+
+        private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
+		// TODO add your handling code here:
+		Profile profileUser = new Profile();
+
+		profileUser.show();
+		this.dispose();
+        }//GEN-LAST:event_ProfileMouseClicked
+
+        private void consultationFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationFrameActionPerformed
+                // TODO add your handling code here:
+		
+		NurseConsultationFrame consultation = new NurseConsultationFrame();
+		
+		consultation.setVisible(true);
+		
+		this.dispose();
+        }//GEN-LAST:event_consultationFrameActionPerformed
+	private void loadProfilePicture() {
+		// Smaller size for the header, e.g., 50x50
+		javax.swing.ImageIcon icon = ProfileManager.getCircularProfilePicture(50, 50);
+		if (icon != null) {
+			Profile.setIcon(icon);
+			Profile.setText("");
+		}
+	}
 
 	/**
 	 * @param args the command line arguments
@@ -207,10 +249,11 @@ public class ClinicHomePage extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel BcshsSactxt;
         private javax.swing.JLabel ClinicSys;
+        private javax.swing.JLabel Profile;
+        private javax.swing.JButton consultationFrame;
         private javax.swing.JButton databaseStudentBtn;
         private javax.swing.JPanel greyBg;
         private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton4;
         private javax.swing.JButton jButton6;
         private javax.swing.JButton jButton7;
         private javax.swing.JLabel jLabel1;
@@ -219,7 +262,5 @@ public class ClinicHomePage extends javax.swing.JFrame {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel panelMainBg;
         // End of variables declaration//GEN-END:variables
-
-	
 
 }

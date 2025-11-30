@@ -9,7 +9,7 @@ package ClinicSystem;
  * @author Admin
  */
 public class Profile extends javax.swing.JFrame {
-	
+
 	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Profile.class.getName());
 
 	/**
@@ -17,6 +17,16 @@ public class Profile extends javax.swing.JFrame {
 	 */
 	public Profile() {
 		initComponents();
+		loadProfilePicture();
+	}
+
+	private void loadProfilePicture() {
+		// 150, 150 is the width and height. Adjust if your label is different size.
+		javax.swing.ImageIcon icon = ProfileManager.getScaledProfilePicture(150, 150);
+		if (icon != null) {
+			profileLabel.setIcon(icon);
+			profileLabel.setText("");
+		}
 	}
 
 	/**
@@ -39,7 +49,10 @@ public class Profile extends javax.swing.JFrame {
                 jFrame8 = new javax.swing.JFrame();
                 jMenu1 = new javax.swing.JMenu();
                 jMenu2 = new javax.swing.JMenu();
+                jFileChooser1 = new javax.swing.JFileChooser();
                 jPanel1 = new javax.swing.JPanel();
+                profileLabel = new javax.swing.JLabel();
+                uploadBtn = new javax.swing.JButton();
 
                 javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
                 jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -146,15 +159,37 @@ public class Profile extends javax.swing.JFrame {
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+                profileLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+                uploadBtn.setText("Upload Picture");
+                uploadBtn.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                uploadBtnActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 615, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(146, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(profileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(131, 131, 131))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(uploadBtn)
+                                                .addGap(149, 149, 149))))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 472, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(profileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(uploadBtn)
+                                .addContainerGap(119, Short.MAX_VALUE))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,7 +204,31 @@ public class Profile extends javax.swing.JFrame {
                 );
 
                 pack();
+                setLocationRelativeTo(null);
         }// </editor-fold>//GEN-END:initComponents
+
+        private void uploadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadBtnActionPerformed
+		// TODO add your handling code here:
+		javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+		fileChooser.setDialogTitle("Select Profile Picture");
+		fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "png", "gif", "jpeg"));
+
+		int userSelection = fileChooser.showOpenDialog(this);
+
+		if (userSelection == javax.swing.JFileChooser.APPROVE_OPTION) {
+			java.io.File fileToSave = fileChooser.getSelectedFile();
+			boolean success = ProfileManager.saveProfilePicture(fileToSave);
+
+			if (success) {
+				javax.swing.JOptionPane.showMessageDialog(this, "Profile picture updated successfully!");
+				loadProfilePicture(); // We will create this method next
+			} else {
+				javax.swing.JOptionPane.showMessageDialog(this, "Failed to save profile picture.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+			}
+		}
+
+
+        }//GEN-LAST:event_uploadBtnActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -198,6 +257,7 @@ public class Profile extends javax.swing.JFrame {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JDialog jDialog1;
+        private javax.swing.JFileChooser jFileChooser1;
         private javax.swing.JFrame jFrame1;
         private javax.swing.JFrame jFrame2;
         private javax.swing.JFrame jFrame3;
@@ -209,5 +269,7 @@ public class Profile extends javax.swing.JFrame {
         private javax.swing.JMenu jMenu1;
         private javax.swing.JMenu jMenu2;
         private javax.swing.JPanel jPanel1;
+        private javax.swing.JLabel profileLabel;
+        private javax.swing.JButton uploadBtn;
         // End of variables declaration//GEN-END:variables
 }
