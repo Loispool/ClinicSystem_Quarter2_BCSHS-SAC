@@ -210,7 +210,7 @@ public class NurseConsultationFrame extends javax.swing.JFrame {
         private void backToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToHomeActionPerformed
                 // TODO add your handling code here:
 		
-	ClinicHomePage home = new ClinicHomePage();
+	ClinicSystemHome home = new ClinicSystemHome();
 	
 	home.setVisible(true);
 	

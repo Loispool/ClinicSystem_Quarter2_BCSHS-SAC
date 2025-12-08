@@ -134,6 +134,8 @@ public class StudentData extends javax.swing.JFrame {
                 jScrollPane1 = new javax.swing.JScrollPane();
                 dataTable = new javax.swing.JTable();
                 backToHome = new javax.swing.JButton();
+                jPanel2 = new javax.swing.JPanel();
+                jLabel2 = new javax.swing.JLabel();
 
                 javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
                 jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -148,6 +150,8 @@ public class StudentData extends javax.swing.JFrame {
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setResizable(false);
+
+                jPanel1.setBackground(new java.awt.Color(38, 26, 114));
 
                 dataTable.setModel(new javax.swing.table.DefaultTableModel(
                         new Object [][] {
@@ -179,6 +183,27 @@ public class StudentData extends javax.swing.JFrame {
                         }
                 });
 
+                jLabel2.setBackground(new java.awt.Color(51, 51, 255));
+                jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel2.setForeground(new java.awt.Color(38, 26, 114));
+                jLabel2.setText("Students Data");
+
+                javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+                jPanel2.setLayout(jPanel2Layout);
+                jPanel2Layout.setHorizontalGroup(
+                        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel2)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                );
+                jPanel2Layout.setVerticalGroup(
+                        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 14, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                );
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
@@ -187,17 +212,23 @@ public class StudentData extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(379, 379, 379)
+                                .addGap(262, 262, 262)
                                 .addComponent(backToHome)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(167, 167, 167)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(backToHome)
-                                .addContainerGap(38, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap())
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(backToHome)
+                                                .addGap(22, 22, 22))))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -219,7 +250,7 @@ public class StudentData extends javax.swing.JFrame {
 
         private void backToHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToHomeActionPerformed
                 // TODO add your handling code here:
-		ClinicHomePage home = new ClinicHomePage();
+		ClinicSystemHome home = new ClinicSystemHome();
 		
 		home.setVisible(true);
 		this.dispose();
@@ -255,7 +286,9 @@ public class StudentData extends javax.swing.JFrame {
         private javax.swing.JButton backToHome;
         private javax.swing.JTable dataTable;
         private javax.swing.JFrame jFrame1;
+        private javax.swing.JLabel jLabel2;
         private javax.swing.JPanel jPanel1;
+        private javax.swing.JPanel jPanel2;
         private javax.swing.JScrollPane jScrollPane1;
         // End of variables declaration//GEN-END:variables
 }

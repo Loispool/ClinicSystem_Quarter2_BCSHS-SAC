@@ -10,14 +10,14 @@ import java.awt.Color;
  *
  * @author Admin
  */
-public class ClinicHomePage extends javax.swing.JFrame {
+public class ClinicSystemHome extends javax.swing.JFrame {
 
-	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClinicHomePage.class.getName());
+	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClinicSystemHome.class.getName());
 
 	/**
 	 * Creates new form ClinicHomePage
 	 */
-	public ClinicHomePage() {
+	public ClinicSystemHome() {
 		initComponents();
 		loadProfilePicture();
 		greyBg.setBackground(new Color(153, 153, 153, 150));
@@ -42,12 +42,10 @@ public class ClinicHomePage extends javax.swing.JFrame {
                 jPanel1 = new javax.swing.JPanel();
                 BcshsSactxt = new javax.swing.JLabel();
                 panelMainBg = new javax.swing.JPanel();
-                jButton6 = new javax.swing.JButton();
                 consultationFrame = new javax.swing.JButton();
-                jButton7 = new javax.swing.JButton();
-                jButton3 = new javax.swing.JButton();
                 ClinicSys = new javax.swing.JLabel();
                 databaseStudentBtn = new javax.swing.JButton();
+                databaseStudentRegistration = new javax.swing.JButton();
                 jLabel2 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,9 +102,6 @@ public class ClinicHomePage extends javax.swing.JFrame {
 
                 panelMainBg.setBackground(new java.awt.Color(204, 204, 204));
 
-                jButton6.setBackground(new java.awt.Color(115, 115, 115));
-                jButton6.setForeground(new java.awt.Color(255, 255, 255));
-
                 consultationFrame.setBackground(new java.awt.Color(115, 115, 115));
                 consultationFrame.setForeground(new java.awt.Color(255, 255, 255));
                 consultationFrame.setText("Consultation");
@@ -115,12 +110,6 @@ public class ClinicHomePage extends javax.swing.JFrame {
                                 consultationFrameActionPerformed(evt);
                         }
                 });
-
-                jButton7.setBackground(new java.awt.Color(115, 115, 115));
-                jButton7.setForeground(new java.awt.Color(255, 255, 255));
-
-                jButton3.setBackground(new java.awt.Color(115, 115, 115));
-                jButton3.setForeground(new java.awt.Color(255, 255, 255));
 
                 ClinicSys.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
                 ClinicSys.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -135,43 +124,43 @@ public class ClinicHomePage extends javax.swing.JFrame {
                         }
                 });
 
+                databaseStudentRegistration.setBackground(new java.awt.Color(115, 115, 115));
+                databaseStudentRegistration.setForeground(new java.awt.Color(255, 255, 255));
+                databaseStudentRegistration.setText("Register a Student");
+                databaseStudentRegistration.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                databaseStudentRegistrationActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout panelMainBgLayout = new javax.swing.GroupLayout(panelMainBg);
                 panelMainBg.setLayout(panelMainBgLayout);
                 panelMainBgLayout.setHorizontalGroup(
                         panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                .addComponent(consultationFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(147, 147, 147)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
+                        .addGroup(panelMainBgLayout.createSequentialGroup()
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ClinicSys, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(174, 174, 174))
                         .addGroup(panelMainBgLayout.createSequentialGroup()
-                                .addGap(283, 283, 283)
+                                .addGap(74, 74, 74)
                                 .addComponent(databaseStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(59, 59, 59)
+                                .addComponent(consultationFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(databaseStudentRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(78, Short.MAX_VALUE))
                 );
                 panelMainBgLayout.setVerticalGroup(
                         panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainBgLayout.createSequentialGroup()
                                 .addContainerGap(179, Short.MAX_VALUE)
                                 .addComponent(ClinicSys)
-                                .addGap(35, 35, 35)
-                                .addComponent(databaseStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addGroup(panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(90, 90, 90)
+                                .addGroup(panelMainBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(consultationFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45))
+                                        .addComponent(databaseStudentBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(databaseStudentRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(83, 83, 83))
                 );
 
                 jPanel2.add(panelMainBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 460));
@@ -212,6 +201,15 @@ public class ClinicHomePage extends javax.swing.JFrame {
 		
 		this.dispose();
         }//GEN-LAST:event_consultationFrameActionPerformed
+
+        private void databaseStudentRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseStudentRegistrationActionPerformed
+                // TODO add your handling code here:
+		RegistrationStudent registration = new RegistrationStudent();
+		
+		registration.show(true);
+		this.dispose();
+		
+        }//GEN-LAST:event_databaseStudentRegistrationActionPerformed
 	private void loadProfilePicture() {
 		// Smaller size for the header, e.g., 50x50
 		javax.swing.ImageIcon icon = ProfileManager.getCircularProfilePicture(50, 50);
@@ -243,7 +241,7 @@ public class ClinicHomePage extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(() -> new ClinicHomePage().setVisible(true));
+		java.awt.EventQueue.invokeLater(() -> new ClinicSystemHome().setVisible(true));
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,10 +250,8 @@ public class ClinicHomePage extends javax.swing.JFrame {
         private javax.swing.JLabel Profile;
         private javax.swing.JButton consultationFrame;
         private javax.swing.JButton databaseStudentBtn;
+        private javax.swing.JButton databaseStudentRegistration;
         private javax.swing.JPanel greyBg;
-        private javax.swing.JButton jButton3;
-        private javax.swing.JButton jButton6;
-        private javax.swing.JButton jButton7;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JPanel jPanel1;

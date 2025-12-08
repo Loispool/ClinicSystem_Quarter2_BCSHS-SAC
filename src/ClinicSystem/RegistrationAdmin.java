@@ -58,7 +58,6 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 jPanel3 = new javax.swing.JPanel();
                 jPanel1 = new javax.swing.JPanel();
                 violetBg = new javax.swing.JPanel();
-                jLabel1 = new javax.swing.JLabel();
                 employmentId = new ClinicSystem.RoundedTextField();
                 eyeClosedConPass = new javax.swing.JLabel();
                 eyeClosedPass = new javax.swing.JLabel();
@@ -70,8 +69,11 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 regLastName = new ClinicSystem.RoundedTextField();
                 register = new javax.swing.JButton();
                 alreadyRegisteredBtn = new javax.swing.JLabel();
+                jLabel5 = new javax.swing.JLabel();
+                jLabel4 = new javax.swing.JLabel();
                 jLabel2 = new javax.swing.JLabel();
                 jLabel3 = new javax.swing.JLabel();
+                jLabel1 = new javax.swing.JLabel();
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
@@ -92,11 +94,6 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
                 violetBg.setBackground(new java.awt.Color(38, 26, 114));
                 violetBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-                jLabel1.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
-                jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-                jLabel1.setText("Register");
-                violetBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
                 employmentId.setForeground(new java.awt.Color(153, 153, 153));
                 employmentId.setText("Employment ID");
@@ -128,9 +125,6 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
                 eyeClosedPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"))); // NOI18N
                 eyeClosedPass.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                eyeClosedPassMouseExited(evt);
-                        }
                         public void mousePressed(java.awt.event.MouseEvent evt) {
                                 eyeClosedPassMousePressed(evt);
                         }
@@ -265,6 +259,16 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 });
                 violetBg.add(alreadyRegisteredBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 180, -1));
 
+                jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel5.setText("Register");
+                violetBg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
+                jLabel4.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel4.setText("Register");
+                violetBg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
                 jPanel1.add(violetBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 470));
 
                 jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911681013-removebg-preview.png"))); // NOI18N
@@ -273,6 +277,12 @@ public class RegistrationAdmin extends javax.swing.JFrame {
                 jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911680989_1.jpg"))); // NOI18N
                 jLabel3.setText("jLabel3");
                 jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 330, 480));
+
+                jLabel1.setBackground(new java.awt.Color(51, 51, 255));
+                jLabel1.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel1.setForeground(new java.awt.Color(38, 26, 114));
+                jLabel1.setText("Clinic System");
+                jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, -1));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -537,27 +547,24 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         }//GEN-LAST:event_employmentIdFocusLost
 
         private void eyeClosedPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMousePressed
-            // TODO add your handling code here:
-            String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-visible-24.png";
-            ImageIcon icon = new ImageIcon(image);
-            icon.getImage().flush();
-            eyeClosedPass.setIcon(icon);
-            regPass.setEchoChar((char) 0);
-        }//GEN-LAST:event_eyeClosedPassMousePressed
+        // TODO add your handling code here:
+        ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-visible-24.png"));
+        icon.getImage().flush();
+        eyeClosedPass.setIcon(icon);
+        regPass.setEchoChar((char) 0);
+    }//GEN-LAST:event_eyeClosedPassMousePressed
 
     private void eyeClosedPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMouseReleased
         // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-not-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"));
         icon.getImage().flush();
         eyeClosedPass.setIcon(icon);
-         regPass.setEchoChar('*');
+        regPass.setEchoChar('*');
     }//GEN-LAST:event_eyeClosedPassMouseReleased
 
     private void eyeClosedConPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedConPassMousePressed
         // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-visible-24.png"));
         icon.getImage().flush();
         eyeClosedConPass.setIcon(icon);
         confirmPass.setEchoChar((char) 0);
@@ -565,17 +572,11 @@ public class RegistrationAdmin extends javax.swing.JFrame {
 
     private void eyeClosedConPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedConPassMouseReleased
         // TODO add your handling code here:
-        String image = "E:\\Caraw_Code_Sa_Clinic\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-not-visible-24.png";
-        ImageIcon icon = new ImageIcon(image);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"));
         icon.getImage().flush();
         eyeClosedConPass.setIcon(icon);
-            confirmPass.setEchoChar('*');
-        
+        confirmPass.setEchoChar('*');
     }//GEN-LAST:event_eyeClosedConPassMouseReleased
-
-        private void eyeClosedPassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMouseExited
-                // TODO add your handling code here:
-        }//GEN-LAST:event_eyeClosedPassMouseExited
 
         private void alreadyRegisteredBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alreadyRegisteredBtnMouseEntered
                 // TODO add your handling code here:
@@ -636,6 +637,8 @@ public class RegistrationAdmin extends javax.swing.JFrame {
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
+        private javax.swing.JLabel jLabel4;
+        private javax.swing.JLabel jLabel5;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel3;
         private ClinicSystem.RoundedTextField regFirstName;

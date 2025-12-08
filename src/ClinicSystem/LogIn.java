@@ -64,7 +64,7 @@ public class LogIn extends javax.swing.JFrame {
                 LogInNameLogo = new javax.swing.JLabel();
                 LogInBtn = new javax.swing.JButton();
                 eyeClosedPass = new javax.swing.JLabel();
-                LogInPass = new javax.swing.JPasswordField();
+                LogInPass = new ClinicSystem.RoundedPasswordField();
                 NewUserBtn = new javax.swing.JButton();
                 LogInUserName = new ClinicSystem.RoundedTextField();
                 violetBg = new javax.swing.JPanel();
@@ -268,7 +268,7 @@ public class LogIn extends javax.swing.JFrame {
 			//if walang lama; else meron
 			if (Username.contains("Enter Username") || Password.contains("Enter Password")) {
 				JOptionPane.showMessageDialog(this, "Fill the required field first!");
-				
+
 			} else  {
 
 				pst = con.prepareStatement("select * from adminregistration where UserName=? AND  Password=?");
@@ -278,7 +278,7 @@ public class LogIn extends javax.swing.JFrame {
 				if (rs.next())// checks if the us and pass are in the database//
 				{
 					JOptionPane.showMessageDialog(this, "Log in successful!");
-					ClinicHomePage home = new ClinicHomePage();
+					ClinicSystemHome home = new ClinicSystemHome();
 					home.setVisible(true);
 					pst.close();
 					this.dispose();
@@ -297,8 +297,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void eyeClosedPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMousePressed
 	    // TODO add your handling code here:
-	    String image = "C:\\Users\\Admin\\Documents\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-visible-24.png";
-	    ImageIcon icon = new ImageIcon(image);
+	    ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-visible-24.png"));
 	    icon.getImage().flush();
 	    eyeClosedPass.setIcon(icon);
 	    LogInPass.setEchoChar((char) 0);
@@ -306,8 +305,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void eyeClosedPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eyeClosedPassMouseReleased
 	    // TODO add your handling code here:
-	    String image = "C:\\Users\\Admin\\Documents\\NetBeansProjects\\ClinicSystemNurse\\src\\ClinicSystem\\IMAGE\\icons8-not-visible-24.png";
-	    ImageIcon icon = new ImageIcon(image);
+	    ImageIcon icon = new ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/icons8-not-visible-24.png"));
 	    icon.getImage().flush();
 	    eyeClosedPass.setIcon(icon);
 	    if (LogInPass.getText().equals("Enter Password")) {
@@ -364,7 +362,7 @@ public class LogIn extends javax.swing.JFrame {
 		/* Set the Nimbus look and feel */
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -394,7 +392,7 @@ public class LogIn extends javax.swing.JFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton LogInBtn;
         private javax.swing.JLabel LogInNameLogo;
-        private javax.swing.JPasswordField LogInPass;
+        private ClinicSystem.RoundedPasswordField LogInPass;
         private ClinicSystem.RoundedTextField LogInUserName;
         private javax.swing.JLabel NameOfThePage;
         private javax.swing.JButton NewUserBtn;

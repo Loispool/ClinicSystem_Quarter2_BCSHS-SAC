@@ -53,6 +53,7 @@ public class Profile extends javax.swing.JFrame {
                 jPanel1 = new javax.swing.JPanel();
                 profileLabel = new javax.swing.JLabel();
                 uploadBtn = new javax.swing.JButton();
+                jButton1 = new javax.swing.JButton();
 
                 javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
                 jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -168,6 +169,13 @@ public class Profile extends javax.swing.JFrame {
                         }
                 });
 
+                jButton1.setText("Home");
+                jButton1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButton1ActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
@@ -180,7 +188,10 @@ public class Profile extends javax.swing.JFrame {
                                                 .addGap(131, 131, 131))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(uploadBtn)
-                                                .addGap(149, 149, 149))))
+                                                .addGap(149, 149, 149))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jButton1)
+                                                .addGap(165, 165, 165))))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +200,9 @@ public class Profile extends javax.swing.JFrame {
                                 .addComponent(profileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(uploadBtn)
-                                .addContainerGap(119, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)
+                                .addContainerGap(78, Short.MAX_VALUE))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,6 +243,13 @@ public class Profile extends javax.swing.JFrame {
 
         }//GEN-LAST:event_uploadBtnActionPerformed
 
+        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+		ClinicSystemHome home = new ClinicSystemHome();
+		
+		home.show(true);
+        }//GEN-LAST:event_jButton1ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -256,6 +276,7 @@ public class Profile extends javax.swing.JFrame {
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton jButton1;
         private javax.swing.JDialog jDialog1;
         private javax.swing.JFileChooser jFileChooser1;
         private javax.swing.JFrame jFrame1;
