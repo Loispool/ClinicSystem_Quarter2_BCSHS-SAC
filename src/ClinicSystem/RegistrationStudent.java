@@ -89,6 +89,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
                 jPanel3 = new javax.swing.JPanel();
                 jLabel2 = new javax.swing.JLabel();
                 jLabel3 = new javax.swing.JLabel();
+                jButton1 = new javax.swing.JButton();
                 pictureBg = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +99,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
                 jPanel1.setForeground(new java.awt.Color(102, 102, 102));
                 jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                jPanel2.setBackground(new java.awt.Color(38, 26, 114));
+                jPanel2.setBackground(new java.awt.Color(55, 37, 165));
                 jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 jLabel1.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
@@ -202,7 +203,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
                                 registerActionPerformed(evt);
                         }
                 });
-                jPanel2.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+                jPanel2.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
 
                 Age.setForeground(new java.awt.Color(153, 153, 153));
                 Age.setText("Age");
@@ -312,6 +313,15 @@ public class RegistrationStudent extends javax.swing.JFrame {
                 jLabel3.setForeground(new java.awt.Color(255, 255, 255));
                 jLabel3.setText("Student's");
                 jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 50));
+
+                jButton1.setForeground(new java.awt.Color(38, 26, 114));
+                jButton1.setText("Cancel");
+                jButton1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                jButton1ActionPerformed(evt);
+                        }
+                });
+                jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
 
                 jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, 490));
 
@@ -691,6 +701,15 @@ public class RegistrationStudent extends javax.swing.JFrame {
 		// TODO add your handling code here:
         }//GEN-LAST:event_HeightAncestorAdded
 
+        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+		
+		ClinicSystemHome home = new ClinicSystemHome();
+		
+		home.setVisible(true);
+		this.dispose();
+        }//GEN-LAST:event_jButton1ActionPerformed
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -724,6 +743,7 @@ public class RegistrationStudent extends javax.swing.JFrame {
         private ClinicSystem.RoundedTextField Section;
         private ClinicSystem.RoundedTextField Sex;
         private ClinicSystem.RoundedTextField Weight;
+        private javax.swing.JButton jButton1;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;

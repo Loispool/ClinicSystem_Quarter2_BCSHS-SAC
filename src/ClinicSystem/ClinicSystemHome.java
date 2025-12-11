@@ -186,10 +186,11 @@ public class ClinicSystemHome extends javax.swing.JFrame {
 
         private void ProfileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfileMouseClicked
 		// TODO add your handling code here:
-		Profile profileUser = new Profile();
-
-		profileUser.show();
+		
+		Profile profile =new Profile();
 		this.dispose();
+		profile.setVisible(true);
+		
         }//GEN-LAST:event_ProfileMouseClicked
 
         private void consultationFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultationFrameActionPerformed

@@ -133,7 +133,7 @@ public class StudentData extends javax.swing.JFrame {
                 jPanel1 = new javax.swing.JPanel();
                 jScrollPane1 = new javax.swing.JScrollPane();
                 dataTable = new javax.swing.JTable();
-                backToHome = new javax.swing.JButton();
+                backToHome = new ClinicSystem.RoundedButton();
                 jPanel2 = new javax.swing.JPanel();
                 jLabel2 = new javax.swing.JLabel();
 
@@ -283,7 +283,7 @@ public class StudentData extends javax.swing.JFrame {
     }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton backToHome;
+        private ClinicSystem.RoundedButton backToHome;
         private javax.swing.JTable dataTable;
         private javax.swing.JFrame jFrame1;
         private javax.swing.JLabel jLabel2;

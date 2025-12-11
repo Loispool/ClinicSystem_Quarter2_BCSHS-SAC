@@ -57,16 +57,27 @@ public class LogIn extends javax.swing.JFrame {
                 jScrollPane1 = new javax.swing.JScrollPane();
                 jTable1 = new javax.swing.JTable();
                 jLabel3 = new javax.swing.JLabel();
-                jButton1 = new javax.swing.JButton();
+                jButton1 = new ClinicSystem.RoundedButton();
+                jLabel11 = new javax.swing.JLabel();
                 jPanel1 = new javax.swing.JPanel();
                 jPanel3 = new javax.swing.JPanel();
-                NameOfThePage = new javax.swing.JLabel();
+                jLabel12 = new javax.swing.JLabel();
                 LogInNameLogo = new javax.swing.JLabel();
-                LogInBtn = new javax.swing.JButton();
+                LogInBtn = new ClinicSystem.RoundedButton();
                 eyeClosedPass = new javax.swing.JLabel();
-                LogInPass = new ClinicSystem.RoundedPasswordField();
+                LogInPass = new javax.swing.JPasswordField();
                 NewUserBtn = new javax.swing.JButton();
                 LogInUserName = new ClinicSystem.RoundedTextField();
+                LogInUserName.setText("Enter Username");
+                LogInUserName.setForeground(new java.awt.Color(153, 153, 153));
+                LogInUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+                        public void focusGained(java.awt.event.FocusEvent evt) {
+                                LogInUserNameFocusGained(evt);
+                        }
+                        public void focusLost(java.awt.event.FocusEvent evt) {
+                                LogInUserNameFocusLost(evt);
+                        }
+                });
                 violetBg = new javax.swing.JPanel();
                 jLabel4 = new javax.swing.JLabel();
                 jLabel2 = new javax.swing.JLabel();
@@ -90,6 +101,11 @@ public class LogIn extends javax.swing.JFrame {
 
                 jButton1.setText("jButton1");
 
+                jLabel11.setBackground(new java.awt.Color(51, 51, 255));
+                jLabel11.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel11.setForeground(new java.awt.Color(38, 26, 114));
+                jLabel11.setText("Clinic System");
+
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                 setTitle("LogIn Page");
                 setAutoRequestFocus(false);
@@ -103,10 +119,11 @@ public class LogIn extends javax.swing.JFrame {
                 jPanel3.setOpaque(false);
                 jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                NameOfThePage.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-                NameOfThePage.setForeground(new java.awt.Color(255, 255, 255));
-                NameOfThePage.setText("System Clinic");
-                jPanel3.add(NameOfThePage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+                jLabel12.setBackground(new java.awt.Color(51, 51, 255));
+                jLabel12.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+                jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+                jLabel12.setText("System Clinic");
+                jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 230, -1));
 
                 LogInNameLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 LogInNameLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ClinicSystem/IMAGE/6226336049911681013-removebg-preview(1).png"))); // NOI18N
@@ -181,17 +198,6 @@ public class LogIn extends javax.swing.JFrame {
                 });
                 jPanel3.add(NewUserBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 180, 20));
 
-                LogInUserName.setBorder(null);
-                LogInUserName.setForeground(new java.awt.Color(204, 204, 204));
-                LogInUserName.setText("Enter Username");
-                LogInUserName.addFocusListener(new java.awt.event.FocusAdapter() {
-                        public void focusGained(java.awt.event.FocusEvent evt) {
-                                LogInUserNameFocusGained(evt);
-                        }
-                        public void focusLost(java.awt.event.FocusEvent evt) {
-                                LogInUserNameFocusLost(evt);
-                        }
-                });
                 jPanel3.add(LogInUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 180, 40));
 
                 jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 330, 420));
@@ -278,8 +284,10 @@ public class LogIn extends javax.swing.JFrame {
 				if (rs.next())// checks if the us and pass are in the database//
 				{
 					JOptionPane.showMessageDialog(this, "Log in successful!");
+					Profile profile = new Profile();
 					ClinicSystemHome home = new ClinicSystemHome();
 					home.setVisible(true);
+					profile.setVisible(true);
 					pst.close();
 					this.dispose();
 				} else {
@@ -390,15 +398,16 @@ public class LogIn extends javax.swing.JFrame {
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton LogInBtn;
+        private ClinicSystem.RoundedButton LogInBtn;
         private javax.swing.JLabel LogInNameLogo;
-        private ClinicSystem.RoundedPasswordField LogInPass;
-        private ClinicSystem.RoundedTextField LogInUserName;
-        private javax.swing.JLabel NameOfThePage;
+        private javax.swing.JPasswordField LogInPass;
+        private javax.swing.JTextField LogInUserName;
         private javax.swing.JButton NewUserBtn;
         private javax.swing.JLabel eyeClosedPass;
-        private javax.swing.JButton jButton1;
+        private ClinicSystem.RoundedButton jButton1;
         private javax.swing.JLabel jLabel1;
+        private javax.swing.JLabel jLabel11;
+        private javax.swing.JLabel jLabel12;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
