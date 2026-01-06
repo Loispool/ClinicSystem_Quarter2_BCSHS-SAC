@@ -285,8 +285,6 @@ public class LogIn extends javax.swing.JFrame {
 				{
 					JOptionPane.showMessageDialog(this, "Log in successful!");
 					Profile profile = new Profile();
-					ClinicSystemHome home = new ClinicSystemHome();
-					home.setVisible(true);
 					profile.setVisible(true);
 					pst.close();
 					this.dispose();
